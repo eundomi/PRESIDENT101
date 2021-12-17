@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const path = require("path")
+const path = require("path");
+const Isuue = require("./models/Issue");
+const Party = require("./models/Party");
 
 dotenv.config();
 const app = express();
@@ -16,9 +18,9 @@ mongoose.connection.on("connected", () => {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
     res.send("hello");
 });
 
