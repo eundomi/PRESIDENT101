@@ -5,9 +5,9 @@ env.config();
 const secretKey = process.env.SECRET_KEY;
 exports.auth = (req, res, next) => {
     try {
-        const { authorization } = req.headers;
-        req.decoded = jwt.verify(authorization, secretKey);
-        return next;
+        const token = req.cookies.x_auth;
+        req.decoded = jwt.verify(token, secretKey);
+        next();
     } catch (err) {
         if (err.name === "TokenExpiredError") {
             return res.status(419).json({
