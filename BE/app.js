@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
 const userRouter = require("./API/User/API_User");
+const candiRouter = require("./API/Candidate/API_Candi");
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/user", userRouter);
+app.use("/api", candiRouter);
 
 app.listen(PORT, () => {
     console.log(`${PORT}번으로 서버가 열렸습니다.`);
