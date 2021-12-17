@@ -22,6 +22,11 @@ const issueSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    like: {
+        type: Number,
+        required: true,
+        default: 0
+    }
 });
 
 module.exports = mongoose.model("issue", issueSchema);
