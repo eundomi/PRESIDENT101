@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const Isuue = require("./models/Issue");
 const Party = require("./models/Party");
+const userRouter = require("./API/User/API_User")
 
 dotenv.config();
 const app = express();
@@ -20,9 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", async (req, res) => {
-    res.send("hello");
-});
+app.use("/user", userRouter);
 
 app.listen(PORT, () => {
     console.log(`${PORT}번으로 서버가 열렸습니다.`);
