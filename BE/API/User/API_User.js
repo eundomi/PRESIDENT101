@@ -24,8 +24,8 @@ function makeHashPW(password, salt) {
 }
 
 function makeToken(email) {
-    // 60초 * 60 이므로 1시간 유효한 토큰 발급
-    return jwt.sign({ email }, secretKey, { expiresIn: 60 * 60 });
+    // 만료시간 : 60초 * 60 이므로 1시간 유효한 토큰 발급 => 24시간(하루) 지속
+    return jwt.sign({ email }, secretKey, { expiresIn: 60 * 60 * 24 });
 }
 
 router.post("/join", asyncHandler(async(req, res) => {
@@ -56,10 +56,17 @@ router.post("/login", asyncHandler(async(req, res) => {
     }
     const hashedPW = makeHashPW(password, user.salt);
     if (hashedPW === user.password) {
-        res.status(201).json({
-            user,
-            msg: "로그인 되었습니다. 토큰을 확인해 주세요",
-            token: makeToken(email),
+        const token = makeToken(email);
+        res
+            .status(201)
+            .cookie("x_auth", token, {
+                maxAge: 1000 * 60 * 60 * 24,
+                httpOnly: true
+            })
+            .json({
+                user,
+                msg: "로그인 되었습니다. 토큰을 확인해 주세요",
+                token
         });
     } else {
         res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
@@ -74,5 +81,11 @@ router.get("/payload", auth, (req, res) => {
         data: email,
     });
 });
+
+router.get("/logout", auth, (req, res) => {
+    return res.cookie("x_auth", "").json({
+        logoutSuccess: true
+    });    
+})
 
 module.exports = router;
