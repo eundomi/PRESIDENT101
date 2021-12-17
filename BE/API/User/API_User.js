@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 const { auth } = require("../../Middleware/authMiddleware");
 const env = require("dotenv");
+const asyncHandler = require("../../Middleware/asyncHandler")
+
 env.config();
 
 const router = express.Router();
@@ -26,7 +28,7 @@ function makeToken(email) {
     return jwt.sign({ email }, secretKey, { expiresIn: 60 * 60 });
 }
 
-router.post("/join", async (req, res) => {
+router.post("/join", asyncHandler(async(req, res) => {
     const { email, password } = req.body;
     if (!isValid_input(email, password)) {
         res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
@@ -41,9 +43,9 @@ router.post("/join", async (req, res) => {
     } else {
         res.status(400).json({ msg: "이미 같은 이메일이 존재합니다." });
     }
-});
+}));
 
-router.post("/login", async (req, res) => {
+router.post("/login", asyncHandler(async(req, res) => {
     const { email, password } = req.body;
     if (!isValid_input(email, password)) {
         res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
@@ -62,7 +64,7 @@ router.post("/login", async (req, res) => {
     } else {
         res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
     }
-});
+}));
 
 router.get("/payload", auth, (req, res) => {
     const { email } = req.decoded;

@@ -25,6 +25,15 @@ app.use(cors());
 app.use("/user", userRouter);
 app.use("/api", candiRouter);
 
+app.use((res, res, next) => {
+    res.status(404).json({ msg: "요청하신 페이지를 찾을 수 없습니다." });
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ msg: "Something broke!" });
+});
+
 app.listen(PORT, () => {
     console.log(`${PORT}번으로 서버가 열렸습니다.`);
 });
