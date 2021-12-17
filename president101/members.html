@@ -4,23 +4,114 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <link rel="stylesheet" href="members.css" />
+        <title>members</title>
     </head>
     <body>
-        <header>
-            <nav>
-                <div class="logo"></div>
-                <div class="title"></div>
+        <div id="container">
+            <ul>
+                <li class="promise">
+                    <div class="promise__title title">공약</div>
+                    <div class="promise__tab_content">
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-all"
+                            checked
+                        />
+                        <label for="tab-all">전체보기</label>
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-01"
+                            checked
+                        />
+                        <label for="tab-01">경제</label>
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-02"
+                            checked
+                        />
+                        <label for="tab-02">정치</label>
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-03"
+                            checked
+                        />
+                        <label for="tab-03">인권</label>
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-04"
+                            checked
+                        />
+                        <label for="tab-04">환경</label>
+                        <input
+                            type="radio"
+                            name="tabmenu"
+                            id="tab-05"
+                            checked
+                        />
+                        <label for="tab-05">기타</label>
 
-                <ul class="nav-links">
-                    <li><a href="members.html">후보자정보</a></li>
-                    <li><a href="issue.html">쟁점이슈</a></li>
-                    <li><a href="#">여론조사</a></li>
-                </ul>
-                <div class="register"></div>
-            </nav>
-        </header>
-        <main></main>
-        <footer></footer>
+                        <div class="conbox con-all">내용-전체보기</div>
+                        <div class="conbox con-01">내용-01</div>
+                        <div class="conbox con-02"></div>
+                        <div class="conbox con-03"></div>
+                        <div class="conbox con-04"></div>
+                        <div class="conbox con-05"></div>
+                    </div>
+                </li>
+                <li class="divider">
+                    <div class="divider__line"></div>
+                </li>
+                <li class="videos">
+                    <div class="videos__title title">영상</div>
+                    <div class="videos__content">
+                        <div class="video-01 video">
+                            <iframe
+                                src="https://www.youtube.com/embed/vk1bDMirCso"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <div class="video-02 video">
+                            <iframe
+                                src="https://www.youtube.com/embed/vk1bDMirCso"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <div class="video-03 video">
+                            <iframe
+                                src="https://www.youtube.com/embed/vk1bDMirCso"
+                                title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </div>
+                    <div class="videos__more"></div>
+                </li>
+                <li class="divider">
+                    <div class="divider__line"></div>
+                </li>
+                <li class="candidates">
+                    <div class="candidates__title"></div>
+                    <div class="candidates__content">
+                        <div id="candidate-01"></div>
+                        <div id="candidate-02"></div>
+                        <div id="candidate-03"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </body>
 </html>
