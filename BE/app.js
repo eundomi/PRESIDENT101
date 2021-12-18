@@ -6,6 +6,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./API/User/API_User");
 const candiRouter = require("./API/Candidate/API_Candi");
+const promiseRouter = require("./API/Promise/API_Promise");
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 app.use("/user", userRouter);
 app.use("/api", candiRouter);
+app.use("/promise-api", promiseRouter);
 
 app.use((req, res, next) => {
     res.status(404).json({ msg: "요청하신 페이지를 찾을 수 없습니다." });
