@@ -2,52 +2,57 @@
     margin: 0;
     padding: 0;
     color: #333;
-    font-family: "맑은 고딕", sans-serif;
+    font-family: 'Nanum Gothic', sans-serif;
     box-sizing: border-box;
 }
-
+.main__container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
 section {
     width: 25%;
     height: 100vh;
     float: left;
     position: relative;
+    z-index: 0;
 }
 section:hover {
     opacity: 0.8;
     text-align: center;
     color: #ffffff;
 }
-
-.page1 {
+.main__page1 {
     background-image: url("1.png");
     background-color: #6399da; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.page2 {
+.main__page2 {
     background-image: url("2.png");
     background-color: #df6962;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.page3 {
+.main__page3 {
     background-image: url("3.png");
     background-color: #ebbf5c;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.page4 {
+.main__page4 {
     background-image: url("4.png");
     background-color: #e88c4e;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.content {
+.main__content {
     text-align: center;
+    width: 100%;
     position: absolute;
     top: 70%;
     left: 50%;
@@ -55,26 +60,17 @@ section:hover {
     color: white;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
-.content h1 {
+.main__content h1 {
     margin-bottom: 10px;
     font-size: 50px;
     font-weight: 800;
     color: #ffffff;
 }
-.content h3 {
+.main__content h3 {
     font-size: 25px;
     font-weight: 400;
     color: #ffffff;
 }
-.inner p {
-    position: absolute;
-    text-align: center;
-    top: 90%;
-    left: 42%;
-    color: #ffffff;
-    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
-}
-
 button {
     font-size: 15pt;
     text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
@@ -84,23 +80,53 @@ button {
     color: white;
     padding: 5px 20px 5px 20px;
 }
+button a{
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
 button:hover {
     color: black;
     background-color: white;
 }
-
+.main__container p {
+    width: 100vw;
+    position: absolute;
+    text-align: center;
+    top: 90%;
+    color: #ffffff;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    z-index: 10;
+}
+.main_dday h3{
+    position: absolute;
+    width: auto;
+    height: auto;
+    top:10%;
+    left:80%;
+    font-size:50px;
+    font-weight: 800;
+    z-index: 20;
+    color: aliceblue;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    
+    
+}
 @media screen and (max-width: 768px) {
     body {
         overflow-x: hidden;
     }
-    
     section {
         width: 100%;
         height: 100vh;
         overflow: hidden;
     }
-    .inner p {
-        top: 20%;
-        left: 38%;
+    .main__container p {
+        top: 25%;
+    }
+    .main_dday h3{
+        top:10%;
+        left:70%;
     }
 }
