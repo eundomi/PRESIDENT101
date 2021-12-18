@@ -4,88 +4,124 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
         <title>members</title>
     </head>
     <body>
         <header>
+            <div class="register">
+                <ul class="register__content">
+                    <li><a href="">로그인</a></li>
+                    <li>/</li>
+                    <li><a href="">회원가입</a></li>
+                </ul>
+            </div>
             <nav>
-                <ul class="nav-links">
+                <div class="nav__logo">
+                    <img
+                        src="./img/logo.png"
+                        width="100px"
+                        height="100px"
+                        alt=""
+                    />
+                </div>
+                <div class="nav__title"><a href="">대선 2022</a></div>
+                <ul class="nav__links">
                     <li><a href="members.html">후보자정보</a></li>
                     <li><a href="issue.html">쟁점이슈</a></li>
                     <li><a href="#">여론조사</a></li>
                 </ul>
-                <div class="register"></div>
+
+                <div class="nav__d-day">D-84</div>
             </nav>
+            <div class="division"></div>
         </header>
         <main>
             <section class="members">
-                <ul>
-                    <li class="members__link">
-                        <a href="#"
-                            ><div class="member__circle_profile">
-                                <img
-                                    id="leejaemyung_circle"
-                                    src="#"
-                                    alt="이재명 프로필"
-                                />
-                                <div>이재명</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="members__link">
-                        <a href="#"
-                            ><div class="member__circle_profile">
-                                <img
-                                    id="yoonseokryeol_circle"
-                                    src="#"
-                                    alt="윤석열 프로필"
-                                />
-                                <div>윤석열</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="members__link">
-                        <a href="#"
-                            ><div class="member__circle_profile">
-                                <img
-                                    id="shimsangjung_circle"
-                                    src="#"
-                                    alt="심상정 프로필"
-                                />
-                                <div>심상정</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="members__link">
-                        <a href="#"
-                            ><div class="member__circle_profile">
-                                <img
-                                    id="ahncheolsoo_circle"
-                                    src="#"
-                                    alt="안철수 프로필"
-                                />
-                                <div>안철수</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            <section class="members__profile">
-                <div class="member__profile_area">
-                    <div class="member__profile_area_content">
-                        <p class="member__party_name">더불어민주당</p>
-                        <h2 class="member__name">이재명</h2>
-                    </div>
-                    <div class="member__image">
-                        <img
-                            id="leejaemyung_profile"
-                            src="#"
-                            alt="이재명 프로필"
-                        />
+                <div class="members__nav">
+                    <ul class="members__nav__content">
+                        <li class="member__link">
+                            <a href="#"
+                                ><div class="member__circle_profile">
+                                    <img
+                                        id="leejaemyung_circle"
+                                        width="40px"
+                                        src="./img/small-01.png"
+                                        alt="이재명 프로필"
+                                    />
+                                    <div class="member__circle_profile__name">
+                                        이재명
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="member__link">
+                            <a href="#"
+                                ><div class="member__circle_profile">
+                                    <img
+                                        id="leejaemyung_circle"
+                                        width="40px"
+                                        src="./img/small-02.png"
+                                        alt="윤석열 프로필"
+                                    />
+                                    <div class="member__circle_profile__name">
+                                        윤석열
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="member__link">
+                            <a href="#"
+                                ><div class="member__circle_profile">
+                                    <img
+                                        id="leejaemyung_circle"
+                                        width="40px"
+                                        src="./img/small-03.png"
+                                        alt="심상정 프로필"
+                                    />
+                                    <div class="member__circle_profile__name">
+                                        심상정
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="member__link">
+                            <a href="#"
+                                ><div class="member__circle_profile">
+                                    <img
+                                        id="leejaemyung_circle"
+                                        width="40px"
+                                        src="./img/small-04.png"
+                                        alt="안철수 프로필"
+                                    />
+                                    <div class="member__circle_profile__name">
+                                        안철수
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="member__profile">
+                    <div class="member__profile_area">
+                        <div class="member__profile_area_content">
+                            <p class="member__party_name">더불어민주당</p>
+                            <p class="member__name">이재명</p>
+                        </div>
+                        <div class="member__image">
+                            <img
+                                id="leejaemyung_profile"
+                                width="300px"
+                                src="./img/big-01.png"
+                                alt="이재명 프로필"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
-            <section class="member__detail_profile">
+
+            <!-- <section class="member__detail_profile">
                 <h3 class="member__detail_profile_title">상세프로필</h3>
                 <div class="row">
                     <ul>
@@ -133,7 +169,7 @@
                         </li>
                     </ul>
                 </div>
-            </section>
+            </section> -->
             <section class="promise">
                 <div class="promise__title title">공약</div>
                 <div class="promise__tab_content">
