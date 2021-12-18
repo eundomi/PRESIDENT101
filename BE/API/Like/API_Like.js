@@ -8,15 +8,18 @@ const asyncHandler = require("../../Middleware/asyncHandler");
 const router = express.Router();
 
 router.post("/upLike", auth, asyncHandler(async (req, res) => {
-    const { shortId, issueId } = req.body;
+    const { shortId } = req.decoded;
+    const { issueId } = req.body;
     const like = await Like.create({ userId: shortId, issueId });
     await Issue.updateOne({ id: issueId }, { $inc: { like: 1 }})
-    res.status(201).json({ msg: "해당 입장에 추천을 완료했습니다." })
+    res.status(201).json({ msg: "해당 입장에 추천을 완료했습니다." });
 }));
 
 router.post("/unLike", auth, asyncHandler(async (req, res) => {
-    const { shortId, issuedId } = req.body;
-    res.send("hello")
+    const { shortId } = req.decoded;
+    const { issueId } = req.body;
+    await Promise.all([Like.deleteOne({ userId: shortId, issueId }), Issue.updateOne({ id: issueId }, { $inc: { like: -1 }})])
+    res.status(201).json({ msg: "해당 입장에 추천을 취소했습니다." });
 }))
 
 router.get("/checkedList", auth, asyncHandler(async (req, res) => {
