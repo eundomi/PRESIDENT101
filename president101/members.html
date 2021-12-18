@@ -19,10 +19,9 @@
             <nav>
                 <div class="nav__logo">
                     <img
-                        src="./img/logo.png"
-                        width="100px"
-                        height="100px"
-                        alt=""
+                        src="./img/logo-cropped.png"
+                        width="150px"
+                        alt="page-logo"
                     />
                 </div>
                 <div class="nav__title"><a href="">대선 2022</a></div>
@@ -121,29 +120,23 @@
                 </div>
             </section>
 
-            <!-- <section class="member__detail_profile">
-                <h3 class="member__detail_profile_title">상세프로필</h3>
-                <div class="row">
-                    <ul>
+            <section class="detail_profile">
+                <h3 class="detail_profile__title title">상세프로필</h3>
+                <div class="detail_profile__content">
+                    <ul class="detail_profile__content__chart">
                         <li>
                             <dl>
                                 <dt>출생</dt>
-                                <dd>생년월일 기재</dd>
+                                <dd>1963.12.08</dd>
                             </dl>
-                        </li>
-                        <li>
                             <dl>
                                 <dt>가족</dt>
                                 <dd>가족정보 기재</dd>
                             </dl>
-                        </li>
-                        <li>
                             <dl>
                                 <dt>학력</dt>
                                 <dd>학력 기재</dd>
                             </dl>
-                        </li>
-                        <li>
                             <dl>
                                 <dt>경력</dt>
                                 <dd>경력 기재</dd>
@@ -154,14 +147,10 @@
                                 <dt>재산</dt>
                                 <dd>재산 기재</dd>
                             </dl>
-                        </li>
-                        <li>
                             <dl>
                                 <dt>병역</dt>
                                 <dd>병역정보 기재</dd>
                             </dl>
-                        </li>
-                        <li>
                             <dl>
                                 <dt>전과</dt>
                                 <dd>전과정보 기재</dd>
@@ -169,21 +158,26 @@
                         </li>
                     </ul>
                 </div>
-            </section> -->
+            </section>
+
+            <section class="divider">
+                <div class="divider__line"></div>
+            </section>
+
             <section class="promise">
                 <div class="promise__title title">공약</div>
                 <div class="promise__tab_content">
                     <input type="radio" name="tabmenu" id="tab-all" checked />
                     <label for="tab-all">전체보기</label>
-                    <input type="radio" name="tabmenu" id="tab-01" checked />
+                    <input type="radio" name="tabmenu" id="tab-01" />
                     <label for="tab-01">경제</label>
-                    <input type="radio" name="tabmenu" id="tab-02" checked />
+                    <input type="radio" name="tabmenu" id="tab-02" />
                     <label for="tab-02">정치</label>
-                    <input type="radio" name="tabmenu" id="tab-03" checked />
+                    <input type="radio" name="tabmenu" id="tab-03" />
                     <label for="tab-03">인권</label>
-                    <input type="radio" name="tabmenu" id="tab-04" checked />
+                    <input type="radio" name="tabmenu" id="tab-04" />
                     <label for="tab-04">환경</label>
-                    <input type="radio" name="tabmenu" id="tab-05" checked />
+                    <input type="radio" name="tabmenu" id="tab-05" />
                     <label for="tab-05">기타</label>
 
                     <div class="conbox con-all">내용-전체보기</div>
@@ -234,11 +228,17 @@
                 <div class="divider__line"></div>
             </section>
             <section class="candidates">
-                <div class="candidates__title"></div>
+                <div class="candidates__title title">다른 후보자 보기</div>
                 <div class="candidates__content">
-                    <div id="candidate-01"><img src="" alt="" /></div>
-                    <div id="candidate-02"><img src="" alt="" /></div>
-                    <div id="candidate-03"><img src="" alt="" /></div>
+                    <div class="candidate-01 candidate">
+                        <img src="./img/others-Y.png" alt="" />
+                    </div>
+                    <div class="candidate-02 candidate">
+                        <img src="./img/others-S.png" alt="" />
+                    </div>
+                    <div class="candidate-03 candidate">
+                        <img src="./img/others-A.png" alt="" />
+                    </div>
                 </div>
             </section>
         </main>
