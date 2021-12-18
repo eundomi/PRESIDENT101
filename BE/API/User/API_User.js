@@ -23,9 +23,9 @@ function makeHashPW(password, salt) {
         .digest("hex");
 }
 
-function makeToken(email) {
+function makeToken(payload) {
     // 만료시간 : 60초 * 60 이므로 1시간 유효한 토큰 발급 => 24시간(하루) 지속
-    return jwt.sign({ email }, secretKey, { expiresIn: 60 * 60 * 24 });
+    return jwt.sign({ "shortId" : payload }, secretKey, { expiresIn: 60 * 60 * 24 });
 }
 
 router.post("/join", asyncHandler(async(req, res) => {
@@ -56,7 +56,7 @@ router.post("/login", asyncHandler(async(req, res) => {
     }
     const hashedPW = makeHashPW(password, user.salt);
     if (hashedPW === user.password) {
-        const token = makeToken(email);
+        const token = makeToken(user.shortId);
         res
             .status(201)
             .cookie("x_auth", token, {
@@ -74,11 +74,11 @@ router.post("/login", asyncHandler(async(req, res) => {
 }));
 
 router.get("/payload", auth, (req, res) => {
-    const { email } = req.decoded;
+    const { shortId } = req.decoded;
     return res.status(200).json({
         code: 200,
         msg: "정상 토큰입니다",
-        data: email,
+        data: shortId,
     });
 });
 
