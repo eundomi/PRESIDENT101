@@ -8,6 +8,7 @@ const userRouter = require("./API/User/API_User");
 const candiRouter = require("./API/Candidate/API_Candi");
 const promiseRouter = require("./API/Promise/API_Promise");
 const likeRouter = require("./API/Like/API_Like");
+const videoUrlRouter = require("./API/VideoUrl/API_VideoUrl");
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,7 @@ app.use("/api/user", userRouter);
 app.use("/api/candidate", candiRouter);
 app.use("/api/promise", promiseRouter);
 app.use("/api/like", likeRouter);
+app.use("/api/videoUrl", videoUrlRouter);
 
 app.use((req, res, next) => {
     res.status(404).json({ msg: "요청하신 페이지를 찾을 수 없습니다." });
