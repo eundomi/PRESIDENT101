@@ -1,7 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const path = require("path")
+const path = require("path");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const userRouter = require("./API/User/API_User");
+const candiRouter = require("./API/Candidate/API_Candi");
+const promiseRouter = require("./API/Promise/API_Promise");
+const likeRouter = require("./API/Like/API_Like");
+const videoUrlRouter = require("./API/VideoUrl/API_VideoUrl");
 
 dotenv.config();
 const app = express();
@@ -16,10 +23,23 @@ mongoose.connection.on("connected", () => {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
+app.use(cookieParser());
 
-app.get("/", (req, res) => {
-    res.send("hello");
+app.use("/api/user", userRouter);
+app.use("/api/candidate", candiRouter);
+app.use("/api/promise", promiseRouter);
+app.use("/api/like", likeRouter);
+app.use("/api/videoUrl", videoUrlRouter);
+
+app.use((req, res, next) => {
+    res.status(404).json({ msg: "요청하신 페이지를 찾을 수 없습니다." });
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ msg: "Something broke!" });
 });
 
 app.listen(PORT, () => {
