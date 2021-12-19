@@ -14,70 +14,69 @@
 </head>
 
 <body>
-    <header>
-        <div class="nav__logo">
-            <a href="main.html">
-                <img src="logo.png" alt="president101" width="50px" />
-            </a>
-        </div>
-    </header>
     <main>
-        <div class="register">
-            <form>
-                <h3 class="register_title">
-                    Join Us
-                </h3>
-                <hr>
-                <div class="register__id">
+        <div class="register_all">
+            <div class="register">
+                <div class="nav__logo">
+                    <a href="main.html">
+                        <img src="logo.png" alt="president101" width="50px" />
+                    </a>
+                </div>
+                <form>
+                    <h3 class="register_title">
+                        Join Us
+                    </h3>
+                    <hr>
                     <label>
                         <p>ID</p>
                         <input type="text" placeholder="아이디">
                     </label>
-                </div>
-                <div class="register__pwd"></div>
-                <label>
-                    <p>PASSWORD</p>
-                    <input type="text" placeholder="비밀번호">
-                </label>
-                <div class="register__pwd-check"></div>
-                <label>
-                    <p>PASSWORD CHECK</p>
-                    <input type="text" placeholder="비밀번호확인">
-                </label>
-                <div class="register__name"></div>
-                <label>
-                    <p>NAME</p>
-                    <input type="text" placeholder="이름">
-                </label>
-                <div class="register__mail"></div>
-                <label>
-                    <p>E-MAIL</p>
-                    <input type="text" placeholder="이메일">
-                </label>
-                <div class="register__phone"></div>
-                <label>
-                    <p>MOBILE/PHONE</p>
-                    <select class="register__companay">
-                        <option value="1" selected>SKT</option>
-                        <option value="2" selected>KT</option>
-                        <option value="3" selected>LG</option>
-                    </select>
-                    <input type="text" placeholder="-빼고 숫자만 입력" required>
-                </label>
 
-                <div class="register__btn">
-                    <input type="submit" value="Create Accout">
-                </div>
-            </form>
+                    <label>
+                        <p>PASSWORD</p>
+                        <input type="text" placeholder="비밀번호">
+                    </label>
 
-            <hr>
+                    <label>
+                        <p>PASSWORD CHECK</p>
+                        <input type="text" placeholder="비밀번호확인">
+                    </label>
 
-            <p class="register__login">
-                <span>계정이 있나요?<a href="login.html">로그인 페이지로 이동</a></span>
-            </p>
+                    <label>
+                        <p>NAME</p>
+                        <input type="text" placeholder="이름">
+                    </label>
+
+                    <label>
+                        <p>E-MAIL</p>
+                        <input type="text" placeholder="이메일">
+                    </label>
+
+                    <label>
+                        <p>MOBILE/PHONE</p>
+                        <select class="register__company">
+                            <option selected disabled value>통신사를 선택하세요.</option>
+                            <option value="1" selected>SKT</option>
+                            <option value="2" selected>KT</option>
+                            <option value="3" selected>LG</option>
+                        </select>
+                        <input type="text" placeholder="-빼고 숫자만 입력" required>
+                    </label>
+
+                    <div class="register__btn">
+                        <input type="submit" value="Create Accout">
+                    </div>
+                </form>
+
+                <hr>
+
+                <p class="register__login">
+                    <span>계정이 있나요?<a href="login.html">로그인 페이지로 이동</a></span>
+                </p>
 
 
-            </form>
+                </form>
+            </div>
         </div>
     </main>
 </body>

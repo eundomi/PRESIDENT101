@@ -5,3 +5,73 @@
     font-family: 'Nanum Gothic', sans-serif;
     box-sizing: border-box;
 }
+
+.register_all{
+    width:100%;
+    height: 100vh;
+    background:#faf5f1;
+    padding:0;
+}
+.register{
+    background:#ffffff;
+    border-radius: 10px;
+    position: absolute;
+    text-align: center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    padding:20px 60px;
+}
+.register_title{
+    font-size:25px;
+    font-weight: 900;
+    color:#333;
+}
+hr{
+    margin-top: 5px;
+    width: 100%;
+    background:#eee;
+}
+
+label p{
+    font-size:15px;
+    text-align: left;
+    margin: 10px 0 5px 0;
+}
+
+input{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:30px;
+    background-color: #f4f4f4;
+    border:none;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.register__btn{
+    padding:10px 0 10px 0;
+}
+.register__btn input{
+    width:310px;
+    height: 40px;
+    font-size:18px;
+    background-color: #6767ab;
+    color:#ffffff;
+    border:none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.register__btn input:hover{
+    background:#5353ac;
+}
+select{
+    width: 100%;
+    height: 20px;
+    margin-bottom: 10px;
+    align-items: left;
+
+}
+.register__login{
+    margin-top: 10px;
+}
