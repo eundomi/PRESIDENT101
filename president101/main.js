@@ -1,5 +1,4 @@
-
-const timerContainer=document.querySelector(".main_dday"),
+const timerContainer=document.querySelector(".main_d-day"),
     timer=timerContainer.querySelector("h3");
 
 function getTime() {
@@ -16,3 +15,16 @@ function init() {
     setInterval(getTime,1000);
 }
 init();
+
+const toggleBtn=document.querySelector('.nav__burger');
+const navbar=document.querySelector('.nav__bar');
+const links=document.querySelector('.nav__links');
+const reg=document.querySelector('.nav__reg');
+
+toggleBtn.addEventListener('click',()=>{
+    console.log("suss");
+    links.classList.toggle('nav-active');
+    reg.classList.toggle('nav-active');
+    navbar.classList.toggle('nav-active');
+    
+});
