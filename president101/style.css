@@ -39,7 +39,7 @@ label p{
     margin: 10px 0 5px 0;
 }
 
-input{
+.register__company,input{
     padding: 0;
     margin: 0;
     width: 100%;
@@ -74,4 +74,14 @@ select{
 }
 .register__login{
     margin-top: 10px;
+}
+
+
+.mobile1{
+    width:60px;
+    height: 20px;
+    text-align: left;
+}
+.mobile2{
+    width:235px;
 }
