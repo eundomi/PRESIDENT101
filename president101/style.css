@@ -21,6 +21,7 @@
     left:50%;
     transform: translate(-50%, -50%);
     padding:20px 60px;
+    box-shadow: 5px 5px 30px rgb(156, 156, 156);
 }
 .register_title{
     font-size:25px;
@@ -34,7 +35,8 @@ hr{
 }
 
 label p{
-    font-size:15px;
+    font-size:13px;
+    font-weight: bold;
     text-align: left;
     margin: 10px 0 5px 0;
 }
@@ -74,6 +76,7 @@ select{
 }
 .register__login{
     margin-top: 10px;
+    font-size: 12px;
 }
 
 
