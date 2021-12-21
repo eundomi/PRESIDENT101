@@ -11,8 +11,8 @@ env.config();
 const router = express.Router();
 const secretKey = process.env.SECRET_KEY;
 
-function isValid_input(email, password) {
-    if (!email || !password) return false;
+function isValid_input(userId, userName, email, password, phone) {
+    if (!userId || !userName || !email || !password || !phone) return false;
     return true;
 }
 
@@ -29,7 +29,7 @@ function makeToken(payload) {
 }
 
 router.post("/join", asyncHandler(async(req, res) => {
-    const { email, password } = req.body;
+    const { userId, userName, email, password, phone } = req.body;
     if (!isValid_input(email, password)) {
         res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
     }
@@ -37,7 +37,7 @@ router.post("/join", asyncHandler(async(req, res) => {
     if (!user) {
         const salt = String(Math.round(new Date().valueOf() * Math.random()));
         const hashedPW = makeHashPW(password, salt);
-        const newUser = { email, password: hashedPW, salt };
+        const newUser = { userId, userName, email, password: hashedPW, salt, phone };
         await User.create(newUser);
         res.status(201).json({ msg: "회원가입이 완료되었습니다." });
     } else {
@@ -46,11 +46,11 @@ router.post("/join", asyncHandler(async(req, res) => {
 }));
 
 router.post("/login", asyncHandler(async(req, res) => {
-    const { email, password } = req.body;
-    if (!isValid_input(email, password)) {
+    const { userId, password } = req.body;
+    if (!isValid_input(userId, password)) {
         res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ userId });
     if (!user) {
         res.status(400).json({ msg: "가입되지 않은 회원입니다" });
     }
