@@ -37,7 +37,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     } catch (err) {
       swal({
         title: "로그인 실패",
-        text: "이메일, 비밀번호를 확인해주세요.",
+        text: "아이디, 비밀번호를 확인해주세요.",
         icon: "warning",
       });
       console.log(err);
