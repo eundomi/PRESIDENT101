@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>PRESIDENT101 : 로그인</title>
 </head>
 
@@ -22,23 +22,23 @@
                         <img src="logo.png" alt="president101" width="50px" />
                     </a>
                 </div>
-                <form>
+                <form id="login-form" name="signin">
                     <h3 class="login_title">
                         Sign in
                     </h3>
                     <hr>
                     <label>
                         <p>ID</p>
-                        <input type="text" placeholder="아이디">
+                        <input type="text" placeholder="아이디" name="id">
                     </label>
 
                     <label>
                         <p>PASSWORD</p>
-                        <input type="text" placeholder="비밀번호">
+                        <input type="password" placeholder="비밀번호" name="password">
                     </label>
 
                     <div class="login__btn">
-                        <input type="submit" value="Sign in">
+                        <input type="submit" class="btn" value="Sign in">
                     </div>
                 </form>
 
@@ -54,6 +54,8 @@
         </div>
         </div>
     </main>
+    <script src="login.js"></script>
+
 </body>
 
 </html>
