@@ -19,3 +19,9 @@ function more() {
         content.style.display = "none";
     }
 }
+
+const toggleBtn = document.querySelector(".nav__toggleBtn");
+const list = document.querySelector(".nav__links");
+toggleBtn.addEventListener("click", () => {
+    list.classList.toggle("active");
+});
