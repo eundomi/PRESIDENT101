@@ -114,28 +114,28 @@ section:hover {
   color: #ffffff;
 }
 .main__page1 {
-  background-image: url("1.png");
+  background-image: url("/president101/imgs/big-01.png");
   background-color: #6399da;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .main__page2 {
-  background-image: url("2.png");
+  background-image: url("/president101/imgs/big-02.png");
   background-color: #df6962;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .main__page3 {
-  background-image: url("3.png");
+  background-image: url("/president101/imgs/big-03.png");
   background-color: #ebbf5c;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .main__page4 {
-  background-image: url("4.png");
+  background-image: url("/president101/imgs/big-04.png");
   background-color: #e88c4e;
   background-position: center;
   background-repeat: no-repeat;
