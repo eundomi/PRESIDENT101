@@ -208,7 +208,7 @@ nav {
 .detail_profile__content__chart dl {
     font-size: 1rem;
     padding: 15px;
-    height: 100px;
+    min-width: 6.25rem;
 }
 
 .detail_profile__content__chart dt {
