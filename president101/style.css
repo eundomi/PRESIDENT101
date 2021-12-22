@@ -117,11 +117,11 @@ nav {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-    background-color: #68b3d2;
+    background-color: #6399da;
 }
 
 .members:before {
-    background-color: #68b3d2;
+    background-color: #6399da;
     /* overflow: hidden; */
     content: "";
     position: absolute;
@@ -139,7 +139,7 @@ nav {
 .members__nav {
     width: 400px;
     height: 60px;
-    background-color: #68b3d2;
+    background-color: #6399da;
 }
 
 .members__nav__content {
@@ -211,6 +211,7 @@ nav {
 }
 
 .detail_profile__content__chart dl {
+    font-size: 1rem;
     padding: 15px;
     height: 100px;
 }
@@ -237,60 +238,37 @@ nav {
     width: 100%;
 }
 
-.promise__tab_content {
+.promise__content {
+    display: flex;
     text-align: center;
-    font-size: 0;
-    max-width: 100%;
-}
-
-input {
-    display: none;
-}
-
-input + label {
-    width: calc(100% / 6);
-    display: inline-block;
-    padding: 20px;
-    text-align: center;
-    background-color: #eae9e9;
-    color: #999;
-    font-size: 1rem;
-    cursor: pointer;
-}
-input:checked + label {
-    background-color: #c4c4c4;
-    color: #000;
+    width: 100%;
 }
 
 .conbox {
     width: 100%;
-    height: 600px;
+    min-height: 500px;
     padding: 20px;
-    background-color: #c4c4c4;
-    /* margin: 0 auto; */
-    font-size: 15px;
+    background-color: #f4f5fa;
+    font-size: 1rem;
     text-align: left;
-    display: none;
     box-sizing: border-box;
 }
 
-#tab-all:checked ~ .con-all {
-    display: block;
+.conbox li {
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
-#tab-01:checked ~ .con-01 {
-    display: block;
+
+.conbox__title {
+    font-weight: 700;
 }
-#tab-02:checked ~ .con-02 {
-    display: block;
+
+.conbox__content {
+    font-weight: 350;
 }
-#tab-03:checked ~ .con-03 {
-    display: block;
-}
-#tab-04:checked ~ .con-04 {
-    display: block;
-}
-#tab-05:checked ~ .con-05 {
-    display: block;
+
+.conbox__content::before {
+    content: "- ";
 }
 
 .divider {
@@ -371,6 +349,10 @@ input:checked + label {
         font-size: 12px;
     }
 
+    body {
+        overflow-x: hidden;
+    }
+
     .nav__title {
         display: flex;
         align-items: center;
@@ -413,6 +395,10 @@ input:checked + label {
         font-size: 8px;
     }
 
+    body {
+        overflow-x: hidden;
+    }
+
     .header__divider {
         display: none;
     }
@@ -420,19 +406,15 @@ input:checked + label {
     .nav {
         display: flex;
         justify-content: space-between;
+        position: relative;
     }
-    /* 
-    .register__content {
-        width: 100rem;
-        display: none;
-    } */
 
     .nav__toggleBtn {
-        font-size: 2rem;
+        font-size: 3rem;
         display: inline-block;
         position: absolute;
-        top: calc(2rem + 9%);
-        right: 7%;
+        top: 2rem;
+        left: 80vw;
     }
 
     .nav__d-day {
