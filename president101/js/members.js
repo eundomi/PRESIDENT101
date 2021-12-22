@@ -69,8 +69,6 @@ function getPromiseData(arr) {
             list.appendChild(content);
         }
     }
-
-    console.log(conboxUl);
 }
 
 let partyName = document.querySelector(".member__party_name");
@@ -95,13 +93,17 @@ function fetchPage(name) {
             partyName.innerText = data.party;
             memberName.innerText = data.name;
             birthInfo.innerText = data.birth;
-            familyInfo.innerText = `${data.family}      ${data.companion}`;
+            familyInfo.innerText = `${data.family} ${data.companion}`;
             eduInfo.innerHTML = data.edu.join("<br>");
             jobInfo.innerHTML = getJobData(data.carrier).join("<br>");
             propertyInfo.innerText = data.property;
             armyInfo.innerText = data.army;
             convictionInfo.innerHTML = data.conviction.join("<br>");
             memberPhoto.setAttribute("src", profilePicture[name]);
+            memberBackgroundColor.setAttribute(
+                "style",
+                `background-color: ${mainColor[name]};`
+            );
         })
         .catch((err) => console.error(err));
 
