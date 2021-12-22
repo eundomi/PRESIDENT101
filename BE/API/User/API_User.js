@@ -16,6 +16,11 @@ function isValid_input(userId, userName, email, password, phone) {
     return true;
 }
 
+function isValid_login(userId, password) {
+    if (!userId || !password) return false;
+    return true;
+}
+
 function makeHashPW(password, salt) {
     return crypto
         .createHash("sha512")
@@ -30,7 +35,7 @@ function makeToken(payload) {
 
 router.post("/join", asyncHandler(async(req, res) => {
     const { userId, userName, email, password, phone } = req.body;
-    if (!isValid_input(email, password)) {
+    if (!isValid_input(userId, userName, email, password, phone)) {
         res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
     }
     const user = await User.findOne({ email });
@@ -47,17 +52,17 @@ router.post("/join", asyncHandler(async(req, res) => {
 
 router.post("/login", asyncHandler(async(req, res) => {
     const { userId, password } = req.body;
-    if (!isValid_input(userId, password)) {
-        res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
+    if (!isValid_login(userId, password)) {
+        return res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
     }
     const user = await User.findOne({ userId });
     if (!user) {
-        res.status(400).json({ msg: "가입되지 않은 회원입니다" });
+        return res.status(400).json({ msg: "가입되지 않은 회원입니다" });
     }
     const hashedPW = makeHashPW(password, user.salt);
     if (hashedPW === user.password) {
         const token = makeToken(user.shortId);
-        res
+        return res
             .status(201)
             .cookie("x_auth", token, {
                 maxAge: 1000 * 60 * 60 * 24,
@@ -69,7 +74,7 @@ router.post("/login", asyncHandler(async(req, res) => {
                 token
         });
     } else {
-        res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
+        return res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
     }
 }));
 
