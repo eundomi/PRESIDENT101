@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/president101/css/register_style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>PRESIDENT101 : 회원가입</title>
+</head>
+
+<body>
+    <main>
+        <div class="register_all">
+            <div class="register">
+                <div class="shadow">
+                    <div class="nav__logo">
+                        <a href="/president101/index.html">
+                            <img src="/president101/imgs/logo.png" alt="president101" width="50px" />
+                        </a>
+                    </div>
+                    <form id="register-form" name="register">
+                        <h3 class="register_title">
+                            Join Us
+                        </h3>
+                        <hr>
+                        <label>
+                            <p>ID</p>
+                            <input type="text" placeholder="아이디" name="id">
+                        </label>
+
+                        <label>
+                            <p>PASSWORD</p>
+                            <input type="password" placeholder="비밀번호" name="password">
+                            <div id="passwordError" class="error"></div>
+                        </label>
+
+                        <label>
+                            <p>PASSWORD CHECK</p>
+                            <input type="password" placeholder="비밀번호 확인" name="password_chk">
+                            <div id="passwordchkError" class="error"></div>
+                        </label>
+
+                        <label>
+                            <p>NAME</p>
+                            <input type="text" placeholder="이름" name="name">
+                        </label>
+
+                        <label>
+                            <p>E-MAIL</p>
+                            <input type="text" placeholder="이메일" name="email">
+                            <div id="emailError" class="error"></div>
+                        </label>
+
+                        <label>
+                            <p>MOBILE/PHONE</p>
+                            <input placeholder="-빼고 숫자만 입력" class="register__mobile" name="number" required>
+                            <div id="numberError" class="error"></div>
+                        </label>
+
+                        <div class="register__btn">
+                            <input type="submit" class="btn" value="Create Accout">
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <p class="register__login">
+                        <span>계정이 있나요?<br><a href="login.html">로그인 페이지로 이동</a></span>
+                    </p>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/president101/js/register.js"></script>
+</body>
+
+</html>
