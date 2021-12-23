@@ -36,13 +36,13 @@ function makeToken(payload) {
 router.post("/join", asyncHandler(async(req, res) => {
     const { userId, userName, email, password, phone } = req.body;
     if (!isValid_input(userId, userName, email, password, phone)) {
-        res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
+        return res.status(400).json({ msg: "이메일과 비밀번호를 확인해주세요" });
     }
     const user = await User.findOne({ email });
     if (!user) {
         const salt = String(Math.round(new Date().valueOf() * Math.random()));
         const hashedPW = makeHashPW(password, salt);
-        const newUser = { userId, userName, email, password: hashedPW, salt, phone };
+        const newUser = { userId, userName, email, password: hashedPW, salt, number: phone };
         await User.create(newUser);
         res.status(201).json({ msg: "회원가입이 완료되었습니다." });
     } else {
