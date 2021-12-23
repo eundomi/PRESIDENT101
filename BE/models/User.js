@@ -1,18 +1,6 @@
 const mongoose = require("mongoose");
 const shortId = require("./types/short-id");
 
-const phoneSchema = new mongoose.Schema({
-    agency: {
-        type: Number,
-        required: true,
-        index: true,
-    },
-    number: {
-        type: String,
-        required: true,
-    },
-});
-
 const userSchema = new mongoose.Schema({
     shortId,
     userId: {
@@ -35,7 +23,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    phone: phoneSchema,
+    number: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model("user", userSchema);
