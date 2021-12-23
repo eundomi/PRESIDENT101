@@ -49,7 +49,6 @@ let partyName = document.querySelector(".member__party_name");
 let memberName = document.querySelector(".member__name");
 let memberPhoto = document.querySelector(".member__image img");
 let memberBackgroundColor = document.querySelector(".members");
-
 let iframeElement = document.querySelectorAll(".video iframe");
 
 let birthInfo = document.querySelector(".birth dd");
