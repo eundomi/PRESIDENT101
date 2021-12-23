@@ -7,7 +7,7 @@
 }
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
   min-width: 8vh;
@@ -19,7 +19,8 @@ nav {
   display: flex;
   cursor: pointer;
   width: 40%;
-  justify-content: center;
+  justify-content: left;
+  padding-left: 40px;
 }
 .nav__logo a {
   display: flex;
@@ -38,7 +39,7 @@ nav {
 .nav__logo p {
   color: #000000;
   font-weight: 800;
-  font-size: 38px;
+  font-size: 28px;
   padding-left: 20px;
   display: flex;
   justify-content: center;
@@ -55,13 +56,13 @@ nav {
 }
 .nav__links {
   display: flex;
-  justify-content: space-around;
   list-style: none;
-  width: 60%;
 }
 .nav__links li {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 450;
+  padding-left: 40px;
+  padding-right: 50px;
 }
 .nav__links li a {
   text-decoration: none;
@@ -218,6 +219,7 @@ button:hover {
   }
 
   .nav__logo {
+    justify-content: center;
     align-items: center;
     width: 60%;
     padding: 4px 0px 0px 10px;
