@@ -17,6 +17,9 @@ const passwordchkerr = document.getElementById("passwordchkError");
 const emailerr = document.getElementById("emailError");
 const numbererr = document.getElementById("numberError");
 
+const port =
+  "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
+
 //팝업창 함수
 function RegisterCheck() {
   if (!register_id.value) {
@@ -27,11 +30,11 @@ function RegisterCheck() {
     });
     return false;
   }
-  pwdCheck = /^[a-zA-z0-9]{4,12}$/;
+  pwdCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   if (!pwdCheck.test(register_password.value)) {
     swal({
       title: "회원가입 실패",
-      text: "비밀번호는 영문 대/소문자와 숫자 4~12자리로 입력해야합니다.",
+      text: "4~12자의 영문 대 소문자 숫자 및 특수문자를 입력해야합니다.",
       icon: "warning",
     });
     return false;
@@ -78,10 +81,12 @@ function RegisterCheck() {
 //입력된 정보가 안맞는 경우 나오게되는 문구
 register_password.addEventListener("input", (e) => {
   passworderr.innerHTML = "";
-  var pwdCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  var pwdCheck =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
   if (!pwdCheck.test(e.target.value)) {
     passworderr.style.display = "block";
-    passworderr.innerHTML = "4~12자의 영문 대 소문자 숫자를 입력하세요.";
+    passworderr.innerHTML =
+      "4~12자의 영문 대 소문자 숫자 및 특수문자를 입력하세요.";
   } else {
     passworderr.style.display = "none";
   }
@@ -120,20 +125,42 @@ document
   .getElementById("register-form")
   .addEventListener("submit", async (e) => {
     e.preventDefault();
+
     if (RegisterCheck() === true) {
-      try {
-        //get
-        swal({
-          title: "회원가입 성공",
-          text: "회원가입 성공하였습니다.",
-          icon: "success",
-        });
-      } catch (err) {
-        swal({
-          title: "회원가입 실패",
-          text: "이미 존재하는 계정입니다.",
-          icon: "warning",
-        });
-      }
+      const req = {
+        userId: register_id.value,
+        userName: register_name.value,
+        email: register_email.value,
+        password: register_password.value,
+        phone: register_number.value,
+      };
+      fetch(`${port}/api/user/join`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(req),
+        redirect: "follow",
+      })
+        .then((res) => {
+          if (res.status === 201) {
+            swal({
+              title: "회원가입 성공",
+              text: "회원가입 성공하였습니다.",
+              icon: "success",
+            }).then((value) => {
+              if (value) {
+                window.location.href = "/president101/index.html";
+              }
+            });
+          } else {
+            swal({
+              title: "회원가입 실패",
+              text: "이미 존재하는 계정입니다.",
+              icon: "warning",
+            });
+          }
+        })
+        .catch((error) => console.log("error", error));
     }
   });
