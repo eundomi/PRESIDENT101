@@ -5,7 +5,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Noto Sans KR", sans-serif;
-    white-space: nowrap;
 }
 html {
     font-size: 16px;
@@ -50,6 +49,7 @@ nav {
     width: 100%;
     height: fit-content;
     margin-bottom: 3px;
+    white-space: nowrap;
 }
 
 .nav {
@@ -248,6 +248,7 @@ nav {
     font-size: 1rem;
     text-align: left;
     box-sizing: border-box;
+    white-space: normal;
 }
 
 .conbox__title {
@@ -364,10 +365,6 @@ nav {
         font-size: 12px;
     }
 
-    /* body {
-        overflow-x: hidden;
-    } */
-
     .nav__title {
         display: flex;
         align-items: center;
@@ -423,7 +420,7 @@ nav {
         font-size: 3rem;
         display: inline-block;
         position: absolute;
-        top: 2rem;
+        top: 0.7rem;
         left: 80vw;
     }
 
