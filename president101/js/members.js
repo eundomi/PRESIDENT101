@@ -45,6 +45,21 @@ const profilePicture = {
     "%EC%95%88%EC%B2%A0%EC%88%98": "../imgs/big-04.png",
 };
 
+let partyName = document.querySelector(".member__party_name");
+let memberName = document.querySelector(".member__name");
+let memberPhoto = document.querySelector(".member__image img");
+let memberBackgroundColor = document.querySelector(".members");
+
+let iframeElement = document.querySelectorAll(".video iframe");
+
+let birthInfo = document.querySelector(".birth dd");
+let familyInfo = document.querySelector(".family dd");
+let eduInfo = document.querySelector(".edu dd");
+let jobInfo = document.querySelector(".job dd");
+let propertyInfo = document.querySelector(".property dd");
+let armyInfo = document.querySelector(".army dd");
+let convictionInfo = document.querySelector(".conviction dd");
+
 function getJobData(arr) {
     let result = [];
     for (const key of arr) {
@@ -71,23 +86,16 @@ function getPromiseData(arr) {
     }
 }
 
-let partyName = document.querySelector(".member__party_name");
-let memberName = document.querySelector(".member__name");
-let memberPhoto = document.querySelector(".member__image img");
-let memberBackgroundColor = document.querySelector(".members");
+function getVideoUrl(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let splittedUrl = arr[i].split("watch?v=");
+        let newUrl = splittedUrl[0] + "embed/" + splittedUrl[1];
+        iframeElement[i].setAttribute("src", newUrl);
+    }
+}
 
-let birthInfo = document.querySelector(".birth dd");
-let familyInfo = document.querySelector(".family dd");
-let eduInfo = document.querySelector(".edu dd");
-let jobInfo = document.querySelector(".job dd");
-let propertyInfo = document.querySelector(".property dd");
-let armyInfo = document.querySelector(".army dd");
-let convictionInfo = document.querySelector(".conviction dd");
-
-let encodedName = "";
 function fetchPage(name) {
-    encodedName = encodeURIComponent(name);
-    fetch(`http://${port}/api/candidate/${encodedName}`)
+    fetch(`http://${port}/api/candidate/${name}`)
         .then((res) => res.json())
         .then((data) => {
             partyName.innerText = data.party;
@@ -107,10 +115,17 @@ function fetchPage(name) {
         })
         .catch((err) => console.error(err));
 
-    fetch(`http://${port}/api/promise/${encodedName}`)
+    fetch(`http://${port}/api/promise/${name}`)
         .then((res) => res.json())
         .then((data) => {
             getPromiseData(data);
+        })
+        .catch((err) => console.error(err));
+
+    fetch(`http://${port}/api/videoUrl/${name}`)
+        .then((res) => res.json())
+        .then((data) => {
+            getVideoUrl(data[0].urls);
         })
         .catch((err) => console.error(err));
 }
