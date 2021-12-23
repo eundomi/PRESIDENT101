@@ -1,16 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 html {
     font-size: 16px;
 }
 
 body {
-    padding: 9% 7%;
+    padding: 3% 7%;
     width: 100vw;
     background-color: white;
     overflow-x: hidden;
@@ -36,6 +37,7 @@ ul {
     display: flex;
 }
 .register__content > li {
+    font-size: 0.8rem;
     margin-right: 10px;
 }
 
@@ -47,6 +49,7 @@ nav {
     width: 100%;
     height: fit-content;
     margin-bottom: 3px;
+    white-space: nowrap;
 }
 
 .nav {
@@ -60,7 +63,7 @@ nav {
     align-items: center;
 }
 .nav__logo img {
-    width: 8.125rem;
+    width: 6.5rem;
 }
 
 .nav__logo__title {
@@ -91,7 +94,7 @@ nav {
 
 .nav__d-day {
     font-size: 3.125rem;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .division {
@@ -104,42 +107,31 @@ nav {
 /* -----main members----- */
 
 .members-container {
-    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 .members {
     width: 100%;
-    height: 18.75rem;
+    /* padding: 0 9%;
+    position: relative;
+    left: -9%; */
+    height: 21rem;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     background-color: #6399da;
-}
-
-.members:before {
-    background-color: #6399da;
-    /* overflow: hidden; */
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    right: -100%;
-    height: 18.75rem;
-    z-index: -1;
-}
-
-.members:after {
-    overflow: hidden;
 }
 
 .members__nav {
-    width: 400px;
-    height: 60px;
-    background-color: #6399da;
+    width: 21rem;
+    white-space: nowrap;
+    height: 3.8125rem;
+    background-color: transparent;
 }
 
 .members__nav__content {
     display: flex;
-    padding: 10px 15px;
+    padding: 0.625rem 1rem;
 }
 
 .member__circle_profile {
@@ -150,23 +142,26 @@ nav {
 }
 
 .member__circle_profile > img {
-    width: 2.5rem;
+    width: 2rem;
 }
 
 .member__circle_profile__name {
     font-size: 1rem;
     font-weight: 700;
     margin-left: 5px;
+    color: black;
 }
 
 .member__profile {
-    width: calc(100% - 400px);
+    width: calc(100% - 21rem);
     height: 100%;
 }
 
 .member__profile_area {
+    height: 100%;
     display: flex;
     justify-content: space-evenly;
+    align-items: flex-end;
     color: white;
 }
 
@@ -176,19 +171,25 @@ nav {
     justify-content: center;
     align-items: center;
     margin: 0 25px;
+    padding-bottom: 4.5rem;
 }
 
 .member__party_name {
+    white-space: nowrap;
     font-size: 2rem;
 }
 
 .member__name {
-    font-size: 3.5rem;
+    white-space: nowrap;
+    font-size: 4rem;
     font-weight: 700;
 }
 
 .member__image > img {
-    width: 18.75rem;
+    position: relative;
+    top: 1rem;
+    width: 22rem;
+    margin-right: 3rem;
 }
 /* -----main detail_profile----- */
 
@@ -208,7 +209,7 @@ nav {
 .detail_profile__content__chart dl {
     font-size: 1rem;
     padding: 15px;
-    height: 100px;
+    min-width: 6.25rem;
 }
 
 .detail_profile__content__chart dt {
@@ -241,17 +242,13 @@ nav {
 
 .conbox {
     width: 100%;
-    min-height: 500px;
-    padding: 20px;
+    min-height: 300px;
+    padding: 1.24rem;
     background-color: #f4f5fa;
     font-size: 1rem;
     text-align: left;
     box-sizing: border-box;
-}
-
-.conbox li {
-    margin-bottom: 15px;
-    line-height: 1.5;
+    white-space: normal;
 }
 
 .conbox__title {
@@ -259,11 +256,15 @@ nav {
 }
 
 .conbox__content {
-    font-weight: 350;
+    font-weight: 400;
 }
 
 .conbox__content::before {
     content: "- ";
+}
+
+.conbox__ul > li {
+    margin-bottom: 1.5rem;
 }
 
 .divider {
@@ -279,26 +280,26 @@ nav {
 /* -----main videos----- */
 
 .videos {
-    height: fit-content;
+    width: 100%;
 }
 
 .videos__content {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0;
-    height: fit-content;
+    justify-content: space-between;
+    padding-bottom: 1rem;
 }
 
 .video {
-    width: 33%;
-    padding: 5px;
-    height: fit-content;
-    text-align: center;
+    width: 32.5%;
+    padding-bottom: 18.28%;
+    position: relative;
 }
 
 .video > iframe {
+    position: absolute;
     width: 100%;
+    height: 100%;
 }
 
 #videos__more__content {
@@ -328,24 +329,40 @@ nav {
 
 .candidates__content {
     display: flex;
+    justify-content: space-between;
 }
 
 .candidate {
     width: calc(100% / 3);
+    margin: 0 0.5rem;
     text-align: center;
 }
 
-.candidate > img {
-    max-width: 100%;
+.candidate a {
+    width: 100%;
+}
+
+.candidate > a > img {
+    width: 100%;
+}
+
+/* -----media query----- */
+
+@media screen and (max-width: 3000px) {
+    html {
+        font-size: 33px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    html {
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 1100px) {
     html {
         font-size: 12px;
-    }
-
-    body {
-        overflow-x: hidden;
     }
 
     .nav__title {
@@ -354,18 +371,13 @@ nav {
     }
 
     .members {
-        height: calc(60px + 18.75rem);
+        height: 25rem;
         flex-direction: column;
-    }
-
-    .members::before {
-        height: calc(60px + 18.75rem);
-        overflow: hidden;
     }
 
     .members__nav {
         width: 100%;
-        height: 60px;
+        height: 3.75rem;
     }
     .member__profile {
         width: 100vw;
@@ -387,7 +399,7 @@ nav {
 
 @media screen and (max-width: 750px) {
     html {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     body {
@@ -408,7 +420,7 @@ nav {
         font-size: 3rem;
         display: inline-block;
         position: absolute;
-        top: 2rem;
+        top: 0.7rem;
         left: 80vw;
     }
 
