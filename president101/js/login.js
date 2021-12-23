@@ -13,6 +13,7 @@ function LogInCheck() {
     });
     return false;
   }
+
   if (!login_password.value) {
     swal({
       title: "로그인 실패",
