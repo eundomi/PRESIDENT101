@@ -354,6 +354,12 @@ nav {
     }
 }
 
+@media screen and (max-width: 2300px) {
+    html {
+        font-size: 25px;
+    }
+}
+
 @media screen and (max-width: 1700px) {
     html {
         font-size: 20px;
@@ -454,5 +460,11 @@ nav {
 
     .nav__links.active {
         display: flex;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    html {
+        font-size: 7px;
     }
 }
