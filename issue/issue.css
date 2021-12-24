@@ -286,10 +286,10 @@ nav {
     padding: 0 5px 0 5px;
     font-weight: bold;
 }
-
+/* 수정필요!!!!!!!!!!!!!!! */
 .issue__contents {
     width: 100%;
-    height: 200px;
+    height: 250px;
     display: flex;
     justify-content: space-between;
 }
@@ -380,7 +380,7 @@ nav {
 
 @media screen and (max-width: 1024px) {
     html {
-        font-size: 10px;
+        font-size: 15px;
     }
     .option__screen_left_image img,
     .option__screen_right_image img {
@@ -473,5 +473,13 @@ nav {
         /* position: absolute;
     left: 100px;
     top: 5%; */
+    }
+
+    /* 수정 필요!!!!!!!!!! */
+    .issue__contents {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
     }
 }
