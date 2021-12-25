@@ -62,18 +62,12 @@ router.post("/login", asyncHandler(async(req, res) => {
     const hashedPW = makeHashPW(password, user.salt);
     if (hashedPW === user.password) {
         const token = makeToken(user.shortId);
-        return res
-            .status(201)
+        res.status(201)
             .cookie("x_auth", token, {
                 maxAge: 1000 * 60 * 60 * 24
-            })
-            .json({
-                user,
-                msg: "로그인 되었습니다. 토큰을 확인해 주세요",
-                token
-        });
+        })
     } else {
-        return res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
+        res.status(400).json({ msg: "이메일과 비밀번호가 일치하지 않습니다." });
     }
 }));
 
