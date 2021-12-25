@@ -44,16 +44,14 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       .then((res) => res.json())
       .then((result) => {
         if (result.token) {
+          console.log(result);
           localStorage.setItem("token", result.token);
           swal({
             title: "로그인 성공",
             text: "로그인에 성공하였습니다.",
             icon: "success",
           }).then((value) => {
-            if (value) {
-              history.back();
-              // window.location.href = "/president101/index.html";
-            }
+            history.back();
           });
         } else {
           swal({
