@@ -141,6 +141,7 @@ function optionDataDelete(optionIndex, pickCandidate) {
         let optionScreen = document.getElementsByClassName(
             "option__screen_left"
         )[0];
+
         optionScreen.id = "option__none_left";
         optionScreen.innerHTML = `<div class="option__screen_left_image">
         <img
@@ -150,7 +151,24 @@ function optionDataDelete(optionIndex, pickCandidate) {
     </div>
     <div class="option__text">
         <p class="option__party">비교할 후보자를 </br> 선택해 주세요</p>
-    </div>`;
+    </div>
+    `;
+        for (i = 0; i < issueKeywords.length; i++) {
+            let issueScreen = document.getElementsByClassName(
+                "issue__candidate-left"
+            )[i];
+            let issueScreenContent = document.getElementsByClassName(
+                "issue__content_candidate-01"
+            )[i];
+            let issueScreenLike = document.getElementsByClassName(
+                "issue__agree_candidate-left"
+            )[i];
+
+            issueScreen.innerHTML = `<img src="../imgs/none-people.png" alt="빈 프로필" class="issue__circle_img" width=40px>`;
+            issueScreenContent.id = "issue__background-none";
+            let issueId = issueScreenLike.id;
+            issueScreenLike.innerHTML = `<div class="issue__agree_none" id="${issueId}">50%</div>`;
+        }
     } else {
         let optionScreen = document.getElementsByClassName(
             "option__screen_right"
@@ -166,6 +184,17 @@ function optionDataDelete(optionIndex, pickCandidate) {
         />
     </div>
     `;
+        for (i = 0; i < issueKeywords.length; i++) {
+            let issueScreen = document.getElementsByClassName(
+                "issue__candidate-right"
+            )[i];
+            let issueScreenContent = document.getElementsByClassName(
+                "issue__content_candidate-02"
+            )[i];
+            issueScreen.innerHTML = `<img src="../imgs/none-people.png" alt="빈 프로필" class="issue__circle_img" width=40px>`;
+            issueScreenContent.id = "issue__background-none";
+            issueScreenContent.innerHTML = `<p></p>`;
+        }
     }
 }
 
@@ -265,8 +294,7 @@ function issueLike(id) {
     fetch(`${url}/api/like/upLike`, {
         method: "POST",
         headers: {
-            Authorization:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9ydElkIjoicjRLZVRHMHZUX1dmYWNsb0huYzVlIiwiaWF0IjoxNjQwMDU1Nzc5LCJleHAiOjE2NDAxNDIxNzl9.2ZaPqby3TSYgw5WcKh11P89ZR7de4-UA7gGKwpAH9d4",
+            Authorization: localStorage.getItem("token"),
         },
         body: JSON.stringify({
             issueId: `${id}`,
@@ -283,7 +311,7 @@ function issueLike(id) {
         })
         .then((res) => {
             alert(res);
-            window.location = "../html/login.html";
+            // window.location = "../html/login.html";
         })
         .catch((err) => {
             alert(err);
@@ -310,11 +338,15 @@ function issueUnlike(id) {
 }
 
 //쟁점이슈 좋아요 %변환
-function issueLikeTrans(id) {}
+function issueLikeTrans(like) {}
 
 //쟁점이슈 좋아요 정보 fetch
 const likeFetch = async () => {
-    const response = await fetch(`${url}/api/like/checkedList`);
+    const response = await fetch(`${url}/api/like/checkedList`, {
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        },
+    });
     return await response.json();
 };
 
@@ -365,7 +397,9 @@ async function issueContentChange(optionIndex, pickCandidate) {
         issueContent.innerHTML = content
             ? `<h4>${content.title}</h4><br><p>${content.desc}</p></br><p>${content.source}</p>`
             : `<p>죄송하지만 해당 쟁점에 대한 후보자의 입장이 확인되지 않습니다.</p>`;
-        issueAgree.innerHTML = `<div class="${pickCandidate.issueAgreeId}">50%</div>`;
+        issueAgree.innerHTML = `<div class="${
+            pickCandidate.issueAgreeId
+        }" id="${content._id}">${issueLikeTrans(content.like)}</div>`;
     }
 }
 

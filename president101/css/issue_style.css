@@ -278,6 +278,11 @@ nav {
     font-weight: bold;
 }
 
+.issue__circle_img {
+    border-radius: 20px;
+    background-color: gray;
+}
+
 .issue__contents {
     width: 100%;
     height: 250px;
@@ -315,6 +320,10 @@ nav {
 
 #issue__background-3 {
     background-color: #e88c4e57;
+}
+
+#issue__background-none {
+    background-color: rgba(128, 128, 128, 0.192);
 }
 
 /* issue agree */
@@ -365,6 +374,11 @@ nav {
 
 .issue__agree_3 {
     background-color: #e88c4e;
+    border-radius: 15px;
+}
+
+.issue__agree_none {
+    background-color: gray;
     border-radius: 15px;
 }
 
