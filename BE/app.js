@@ -24,10 +24,7 @@ mongoose.connection.on("connected", () => {
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(cors({
-    origin: "elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com",
-    credentials: true
-}));
+app.use(cors());
 app.use(cookieParser());
 
 app.use("/api/user", userRouter);
