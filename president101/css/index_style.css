@@ -265,7 +265,7 @@ button:hover {
     display: none;
   }
   .nav__reg li {
-    margin: 0px 0 5px 0;
+    margin: 3px 0 3px 0;
   }
   .nav__links li a,
   .nav__reg li a {

@@ -34,7 +34,7 @@ const port =
   "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
 
 if (localStorage.getItem("token")) {
-  log.innerHTML = "<li>로그아웃</li>";
+  log.innerHTML = "<li><a>로그아웃</a></li>";
   log.onclick = function () {
     swal({
       title: "로그아웃 하시겠습니까?",
