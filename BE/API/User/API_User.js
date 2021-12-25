@@ -62,6 +62,7 @@ router.post("/login", asyncHandler(async(req, res) => {
     const hashedPW = makeHashPW(password, user.salt);
     if (hashedPW === user.password) {
         const token = makeToken(user.shortId);
+        res.header("Access-Control-Allow-Origin","*");
         return res
             .status(201)
             .cookie("x_auth", token, {
