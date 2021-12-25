@@ -1,0 +1,460 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+    padding: 5% 7%;
+    width: 100vw;
+}
+
+/* -----header----- */
+a {
+    text-decoration: none;
+    color: black;
+}
+ul {
+    list-style: none;
+}
+
+.register {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.register__content {
+    display: flex;
+}
+.register__content > li {
+    font-size: 0.8rem;
+    margin-right: 10px;
+}
+
+nav {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+}
+.nav__logo img {
+    width: 6.5rem;
+}
+
+.nav__logo__title {
+    margin: 0 2rem;
+}
+
+.nav__logo__title > a {
+    color: rgba(0, 0, 0, 0.678);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.nav__links {
+    display: flex;
+}
+.nav__links > li {
+    margin-right: 2.5rem;
+    font-size: 1.25rem;
+}
+.nav__links > li:nth-child(2) > a {
+    color: #6667ab;
+    font-weight: 700;
+}
+
+.nav__toggleBtn {
+    display: none;
+}
+
+.nav__d-day {
+    font-size: 3.125rem;
+    font-weight: 700;
+}
+
+.division {
+    height: 2px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #6667ab;
+}
+
+/* -----main----- */
+/* 후보자 옵션 */
+.option {
+    width: 100%;
+}
+
+.members__nav__content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.member__link {
+    padding: 20px;
+}
+
+.member__link a {
+    text-align: center;
+    display: block;
+}
+
+.member__circle_profile__name {
+    display: block;
+}
+
+/* 선택된 후보자 프로필 */
+.option__screen {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    white-space: nowrap;
+}
+
+.option__screen_bg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    height: inherit;
+}
+
+.option__screen_left {
+    position: relative;
+}
+
+.option__screen_right {
+    position: relative;
+}
+
+#option__lee_profile_left {
+    background: linear-gradient(to right, #6399da, rgba(244, 245, 250, 0));
+}
+
+#option__lee_profile_right {
+    background: linear-gradient(to left, #6399da, rgba(244, 245, 250, 0));
+}
+
+#option__yoon_profile_left {
+    background: linear-gradient(to right, #df6962, rgba(244, 245, 250, 0));
+}
+
+#option__yoon_profile_right {
+    background: linear-gradient(to left, #df6962, rgba(244, 245, 250, 0));
+}
+
+#option__shim_profile_left {
+    background: linear-gradient(to right, #ebbf5c, rgba(244, 245, 250, 0));
+}
+
+#option__shim_profile_right {
+    background: linear-gradient(to left, #ebbf5c, rgba(244, 245, 250, 0));
+}
+
+#option__ahn_profile_left {
+    background: linear-gradient(to right, #e88c4e, rgba(244, 245, 250, 0));
+}
+
+#option__ahn_profile_right {
+    background: linear-gradient(to left, #e88c4e, rgba(244, 245, 250, 0));
+}
+
+#option__none_left {
+    background: linear-gradient(to right, darkgray, rgba(244, 245, 250, 0));
+}
+
+#option__none_right {
+    background: linear-gradient(to left, darkgray, rgba(244, 245, 250, 0));
+}
+
+.option__screen_left_image img,
+.option__screen_right_image img {
+    max-height: 300px;
+}
+
+.option__party {
+    display: inherit;
+    align-items: center;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.option__vs {
+    display: inherit;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 0 5% 0 5%;
+    color: gray;
+}
+
+.option__name {
+    display: inherit;
+    align-items: center;
+    font-size: 2.5em;
+}
+
+/* keyword */
+.keywords__section {
+    margin: 20px 0 20px 0;
+    width: inherit;
+    text-align: center;
+}
+
+.keywords__button {
+    font-size: 1rem;
+    padding: 0.2%;
+    margin: 0.2%;
+    color: #6667ab;
+    font-weight: bolder;
+    border: 1.5px solid #6667ab;
+    background-color: #e3dbeb6e;
+}
+
+/* -----issue----- */
+.issue {
+    width: inherit;
+}
+
+.issue__keyword {
+    font-size: 1.3em;
+    text-align: center;
+    margin: 1% 0 1% 0;
+    font-weight: bold;
+    color: #4b0082;
+    margin-top: 3%;
+}
+
+/* issue candidates */
+.issue__candidates {
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+}
+
+.issue__candidate-left {
+    text-align: left;
+    display: table;
+}
+
+.issue__candidate-left > span {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 5px 0 5px;
+    font-weight: bold;
+}
+
+.issue__candidate-right {
+    text-align: right;
+    display: table;
+}
+
+.issue__candidate-right > span {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 5px 0 5px;
+    font-weight: bold;
+}
+
+.issue__circle_img {
+    border-radius: 20px;
+    background-color: gray;
+}
+
+.issue__contents {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.issue__content_candidate-01 {
+    text-align: left;
+    width: 50%;
+    border-radius: 5px;
+    padding: 3%;
+    margin: 0 1% 0 0;
+}
+
+.issue__content_candidate-02 {
+    text-align: left;
+    width: 50%;
+    border-radius: 5px;
+    padding: 3%;
+    margin: 0 0 0 1%;
+}
+
+#issue__background-0 {
+    background-color: #6399da2d;
+}
+
+#issue__background-1 {
+    background-color: #df68622f;
+}
+
+#issue__background-2 {
+    background-color: #ebc05c5e;
+}
+
+#issue__background-3 {
+    background-color: #e88c4e57;
+}
+
+#issue__background-none {
+    background-color: rgba(128, 128, 128, 0.192);
+}
+
+/* issue agree */
+.issue__agree {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.issue__agree_button {
+    border: solid 1px white;
+    background-color: white;
+    font-size: 20px;
+}
+
+.issue__agree_bar {
+    width: 100%;
+    display: flex;
+}
+
+.issue__agree_candidate-left {
+    width: 50%;
+    margin: 1% 0;
+}
+
+.issue__agree_candidate-right {
+    width: 50%;
+    margin: 1% 0;
+}
+
+.issue__agree_0 {
+    background-color: #6399da;
+    border-radius: 15px;
+}
+
+.issue__agree_1 {
+    background-color: #df6962;
+    border-radius: 15px;
+}
+
+.issue__agree_2 {
+    background-color: #ebbf5c;
+    border-radius: 15px;
+}
+
+.issue__agree_3 {
+    background-color: #e88c4e;
+    border-radius: 15px;
+}
+
+.issue__agree_none {
+    background-color: gray;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+    .option__screen_left_image img,
+    .option__screen_right_image img {
+        max-height: 250px;
+    }
+
+    .option__screen {
+        width: 100%;
+        height: 250px;
+        text-align: center;
+        display: flex;
+        white-space: nowrap;
+    }
+
+    .option__vs {
+        display: inherit;
+        align-items: center;
+        font-size: 1.5rem;
+        margin: 0 3% 0 3%;
+        color: gray;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 8px;
+    }
+
+    .option__screen {
+        height: 230px;
+        text-align: center;
+        display: flex;
+    }
+    .option__screen_left,
+    .option__screen_right {
+        position: relative;
+    }
+
+    .option__screen_left {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .option__screen_right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .option__screen_left_image img,
+    .option__screen_right_image img {
+        max-height: 185px;
+    }
+
+    .option__vs {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        margin: 0 2% 0 2%;
+        color: gray;
+    }
+
+    .option__text {
+        width: inherit;
+        position: flex;
+    }
+
+    .issue__contents {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
