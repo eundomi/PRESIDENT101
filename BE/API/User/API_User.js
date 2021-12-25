@@ -65,8 +65,7 @@ router.post("/login", asyncHandler(async(req, res) => {
         return res
             .status(201)
             .cookie("x_auth", token, {
-                maxAge: 1000 * 60 * 60 * 24,
-                httpOnly: true
+                maxAge: 1000 * 60 * 60 * 24
             })
             .json({
                 user,
