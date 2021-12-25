@@ -348,12 +348,12 @@ nav {
 }
 
 .issue__agree_candidate-left {
-    width: 50%;
+    /* width: 50%; */
     margin: 1% 0;
 }
 
 .issue__agree_candidate-right {
-    width: 50%;
+    /* width: 50%; */
     margin: 1% 0;
 }
 
