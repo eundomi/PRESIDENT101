@@ -43,10 +43,8 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         if (result.token) {
           localStorage.setItem("token", result.token);
-          console.log("토큰 로컬에 저장 완료");
           swal({
             title: "로그인 성공",
             text: "로그인에 성공하였습니다.",
