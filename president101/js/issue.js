@@ -254,8 +254,13 @@ const issueFetch = async (name) => {
     return await response.json();
 };
 
-//쟁점이슈 좋아요 % 변환
-function issueLikeTrans(leftCount, rightCount, issueId) {}
+// //쟁점이슈 좋아요 % 변환
+// function issueLikeTrans(leftCount, rightCount, issueId) {
+//     let leftRough = document.querySelector(".issue__agree_candidate-left");
+//     let left = leftRough.querySelector(`#${issueId}`);
+//     let rightRough = document.querySelector(".issue__agree_candidate-right");
+//     let right = rightRough.querySelector(`#${issueId}`);
+// }
 
 //쟁점이슈 내용 초기 작성
 function issueContents() {
@@ -314,9 +319,6 @@ function issueContents() {
 function issueLike(id) {
     fetch(`${url}/api/like/upLike`, {
         method: "POST",
-        headers: {
-            Authorization: localStorage.getItem("token"),
-        },
         body: JSON.stringify({
             issueId: `${id}`,
         }),
@@ -360,11 +362,7 @@ function issueUnlike(id) {
 
 //쟁점이슈 좋아요 정보 fetch
 const likeFetch = async () => {
-    const response = await fetch(`${url}/api/like/checkedList`, {
-        headers: {
-            Authorization: localStorage.getItem("token"),
-        },
-    });
+    const response = await fetch(`${url}/api/like/checkedList`);
     const data = await response.json();
     console.log(data);
 };
@@ -416,9 +414,7 @@ async function issueContentChange(optionIndex, pickCandidate) {
         issueContent.innerHTML = content
             ? `<h4>${content.title}</h4><br><p>${content.desc}</p></br><p>${content.source}</p>`
             : `<p>죄송하지만 해당 쟁점에 대한 후보자의 입장이 확인되지 않습니다.</p>`;
-        issueAgree.innerHTML = `<div class="${
-            pickCandidate.issueAgreeId
-        }" id="${content._id}">${issueLikeTrans(content.like)}</div>`;
+        issueAgree.innerHTML = `<div class="${pickCandidate.issueAgreeId}" id="issue-${content._id}">${content.like}</div>`;
     }
 }
 
@@ -440,5 +436,6 @@ window.onload = function () {
     issueContents();
     issueContentChange(0, candidates[0]);
     issueContentChange(1, candidates[1]);
+
     likeFetch();
 };
