@@ -41,15 +41,20 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       body: JSON.stringify(req),
       redirect: "follow",
     })
-      .then((res) => {
-        if (res.status === 201) {
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.token) {
+          localStorage.setItem("token", result.token);
+          console.log("토큰 로컬에 저장 완료");
           swal({
             title: "로그인 성공",
             text: "로그인에 성공하였습니다.",
             icon: "success",
           }).then((value) => {
             if (value) {
-              window.location.href = "/president101/index.html";
+              history.back();
+              // window.location.href = "/president101/index.html";
             }
           });
         } else {
