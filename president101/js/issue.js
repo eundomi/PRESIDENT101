@@ -8,12 +8,6 @@ function getTime() {
     dday.innerText = `D-${day}`;
 }
 
-function init() {
-    getTime();
-    setInterval(getTime, 1000);
-}
-init();
-
 //후보자들 정보
 const candidates = [
     {
@@ -214,6 +208,7 @@ function optionDataDelete(optionIndex, pickCandidate) {
             issueScreenLike.innerHTML = `<div class="issue__agree_none" id="${issueId}">50%</div>`;
             issueScreenLikeOther.style = `width:50%`;
             issueScreenLikeOther.firstChild.innerText = "50%";
+            //issueLikeTrans 함수 연결 필요
         }
     }
 }
@@ -254,13 +249,41 @@ const issueFetch = async (name) => {
     return await response.json();
 };
 
-// //쟁점이슈 좋아요 % 변환
-// function issueLikeTrans(leftCount, rightCount, issueId) {
-//     let leftRough = document.querySelector(".issue__agree_candidate-left");
-//     let left = leftRough.querySelector(`#${issueId}`);
-//     let rightRough = document.querySelector(".issue__agree_candidate-right");
-//     let right = rightRough.querySelector(`#${issueId}`);
-// }
+//쟁점이슈 좋아요 % 변환
+function issueLikeTrans() {
+    if ((memberArray[0] == null) | (memberArray[1] == null)) {
+        for (i = 0; i < issueKeywords.length; i++) {
+            let leftCount = document.getElementsByClassName(
+                "issue__agree_candidate-left"
+            )[i].lastChild.value;
+            let rightCount = document.getElementsByClassName(
+                "issue__agree_candidate-right"
+            )[i].lastChild.value;
+
+            issueLeft.style = `width:50%`;
+            issueLeft.innerText = `0%`;
+            issueRight.style = `width:50%`;
+            issueRight.innerHTML = `0%`;
+        }
+    } else {
+        for (i = 0; i < issueKeywords.length; i++) {
+            let leftCount = document.getElementsByClassName(
+                "issue__agree_candidate-left"
+            )[i].lastChild.value;
+            let rightCount = document.getElementsByClassName(
+                "issue__agree_candidate-right"
+            )[i].lastChild.value;
+
+            let leftPercent = (leftCount / (leftCount + rightCount)) * 100;
+            let rightPercent = 100 - leftPercent;
+
+            issueLeft.style = `width:${leftPercent}%`;
+            issueLeft.innerText = `${leftPercent}`;
+            issueRight.style = `width:${rightPercent}%`;
+            issueRight.innerHTML = `${rightPercent}`;
+        }
+    }
+}
 
 //쟁점이슈 내용 초기 작성
 function issueContents() {
@@ -284,10 +307,10 @@ function issueContents() {
         </div>
         <div class="issue__contents">
             <div class="issue__content_candidate-01 issue__content-left-${i}" id="issue__background-0">
-                <p>API</p>
+                <p></p>
             </div>
             <div class="issue__content_candidate-02 issue__content-right-${i}" id="issue__background-1">
-                <p>API</p>
+                <p></p>
             </div>
         </div>
         <div class="issue__agree">
@@ -315,59 +338,57 @@ function issueContents() {
     }
 }
 
-//쟁점이슈 좋아요
-function issueLike(id) {
-    fetch(`${url}/api/like/upLike`, {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({
-            issueId: `${id}`,
-        }),
-    })
-        .then((response) => {
-            if (response.ok) {
-                return "해당 입장에 추천을 완료했습니다.";
-            } else if (response.status == 401) {
-                return "로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다.";
-            } else {
-                throw new Error("Network response was not ok.");
-            }
-        })
-        .then((res) => {
-            alert(res);
-            // window.location = "../html/login.html";
-        })
-        .catch((err) => {
-            alert(err);
-        });
-}
-
-//쟁점이슈 좋아요 취소
-function issueUnlike(id) {
-    fetch(`${url}/api/like/unLike`, {
-        method: "POST",
-        credentials: "include",
-        body: JSON.stringify({
-            issueId: `${id}`,
-        }),
-    })
-        .then((response) => {
-            if (response.ok) {
-                return "해당 입장에 추천을 취소했습니다.";
-            } else {
-                throw new Error("Network response was not ok.");
-            }
-        })
-        .then((res) => alert(res))
-        .catch((err) => alert(err));
-}
 
 //쟁점이슈 좋아요 정보 fetch
+let likeList = [];
 const likeFetch = async () => {
-    const response = await fetch(`${url}/api/like/checkedList`, { credentials: "include" });
-    const data = await response.json();
-    console.log(data);
+    const response = await fetch(`${url}/api/like/checkedList`);
+    likeList = await response.json();
 };
+
+//쟁점이슈 좋아요 or 좋아요 취소
+function likeClick(id) {
+    if (likeList.indexOf(id) != -1) {
+        fetch(`${url}/api/like/upLike`, {
+            method: "POST",
+            body: JSON.stringify({
+                issueId: `${id}`,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return "해당 입장에 추천을 완료했습니다.";
+                } else if (response.status == 401) {
+                    return "로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다.";
+                } else {
+                    throw new Error("Network response was not ok.");
+                }
+            })
+            .then((res) => {
+                alert(res);
+                // window.location = "../html/login.html";
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    } else {
+        fetch(`${url}/api/like/unLike`, {
+            method: "POST",
+            body: JSON.stringify({
+                issueId: `${id}`,
+            }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return "해당 입장에 추천을 취소했습니다.";
+                } else {
+                    throw new Error("Network response was not ok.");
+                }
+            })
+            .then((res) => alert(res))
+            .catch((err) => alert(err));
+    }
+}
 
 //쟁점이슈 내용 변경
 async function issueContentChange(optionIndex, pickCandidate) {
@@ -411,12 +432,14 @@ async function issueContentChange(optionIndex, pickCandidate) {
         issueContent.id = `${pickCandidate.issueClass}`;
         likeBtn.id = `${content._id}`;
         likeBtn.addEventListener("click", function () {
-            issueLike(content._id);
+            likeClick(content._id);
         });
         issueContent.innerHTML = content
             ? `<h4>${content.title}</h4><br><p>${content.desc}</p></br><p>${content.source}</p>`
             : `<p>죄송하지만 해당 쟁점에 대한 후보자의 입장이 확인되지 않습니다.</p>`;
-        issueAgree.innerHTML = `<div class="${pickCandidate.issueAgreeId}" id="issue-${content._id}">${content.like}</div>`;
+        issueAgree.innerHTML = `<div class="${pickCandidate.issueAgreeId}" id="issue-${content._id}">${content.like}</div>
+        <input type="hidden" name="issue-${content._id}" value="${content.like}"/>`;
+        //issueLikeTrans 함수 연결 필요
     }
 }
 
@@ -430,14 +453,15 @@ function keywordClick(index) {
     window.scroll({ top: pickKeyword, behavior: "auto" });
 }
 
-window.onload = function () {
+window.onload = async function () {
+    getTime();
     memberLink();
     keywordSection();
     optionDataChange(0, candidates[0]);
     optionDataChange(1, candidates[1]);
     issueContents();
-    issueContentChange(0, candidates[0]);
-    issueContentChange(1, candidates[1]);
-
+    await issueContentChange(0, candidates[0]);
+    await issueContentChange(1, candidates[1]);
+    issueLikeTrans();
     likeFetch();
 };
