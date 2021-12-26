@@ -408,6 +408,32 @@ nav {
     }
 }
 
+@media screen and (max-width: 900px) {
+    html {
+        font-size: 10px;
+    }
+    .option__screen_left_image img,
+    .option__screen_right_image img {
+        max-height: 250px;
+    }
+
+    .option__screen {
+        width: 100%;
+        height: 250px;
+        text-align: center;
+        display: flex;
+        white-space: nowrap;
+    }
+
+    .option__vs {
+        display: inherit;
+        align-items: center;
+        font-size: 1.5rem;
+        margin: 0 3% 0 3%;
+        color: gray;
+    }
+}
+
 @media screen and (max-width: 768px) {
     html {
         font-size: 8px;
