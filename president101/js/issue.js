@@ -319,6 +319,7 @@ function issueContents() {
 function issueLike(id) {
     fetch(`${url}/api/like/upLike`, {
         method: "POST",
+        credentials: "include",
         body: JSON.stringify({
             issueId: `${id}`,
         }),
@@ -345,6 +346,7 @@ function issueLike(id) {
 function issueUnlike(id) {
     fetch(`${url}/api/like/unLike`, {
         method: "POST",
+        credentials: "include",
         body: JSON.stringify({
             issueId: `${id}`,
         }),
@@ -362,7 +364,7 @@ function issueUnlike(id) {
 
 //쟁점이슈 좋아요 정보 fetch
 const likeFetch = async () => {
-    const response = await fetch(`${url}/api/like/checkedList`);
+    const response = await fetch(`${url}/api/like/checkedList`, { credentials: "include" });
     const data = await response.json();
     console.log(data);
 };
