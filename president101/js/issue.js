@@ -252,37 +252,36 @@ const issueFetch = async (name) => {
 
 //쟁점이슈 좋아요 % 변환
 function issueLikeTrans() {
-    if ((memberArray[0] == null) | (memberArray[1] == null)) {
-        for (i = 0; i < issueKeywords.length; i++) {
-            let leftCount = document.getElementsByClassName(
-                "issue__agree_candidate-left"
-            )[i].lastChild.value;
-            let rightCount = document.getElementsByClassName(
-                "issue__agree_candidate-right"
-            )[i].lastChild.value;
+  if ((memberArray[0] == null) | (memberArray[1] == null)) {
+    for (i = 0; i < issueKeywords.length; i++) {
+      let leftCount = document.getElementsByClassName(
+        "issue__agree_candidate-left"
+      )[i].lastChild.value;
+      let rightCount = document.getElementsByClassName(
+        "issue__agree_candidate-right"
+      )[i].lastChild.value;
 
-            leftCount.style = `width:50%`;
-            leftCount.innerText = `0%`;
-            rightCount.style = `width:50%`;
-            rightCount.innerHTML = `0%`;
-        }
-    } else {
-        for (i = 0; i < issueKeywords.length; i++) {
-            let leftCount = document.getElementsByClassName(
-                "issue__agree_candidate-left"
-            )[i].lastChild.value;
-            let rightCount = document.getElementsByClassName(
-                "issue__agree_candidate-right"
-            )[i].lastChild.value;
+      leftCount.style = `width:50%`;
+      leftCount.innerText = `0%`;
+      rightCount.style = `width:50%`;
+      rightCount.innerHTML = `0%`;
+    }
+  } else {
+    for (i = 0; i < issueKeywords.length; i++) {
+      let leftCount = document.getElementsByClassName(
+        "issue__agree_candidate-left"
+      )[i].lastChild.value;
+      let rightCount = document.getElementsByClassName(
+        "issue__agree_candidate-right"
+      )[i].lastChild.value;
 
-            let leftPercent = (leftCount / (leftCount + rightCount)) * 100;
-            let rightPercent = 100 - leftPercent;
+      let leftPercent = (leftCount / (leftCount + rightCount)) * 100;
+      let rightPercent = 100 - leftPercent;
 
-            leftCount.style = `width:${leftPercent}%`;
-            leftCount.innerText = `${leftPercent}`;
-            rightCount.style = `width:${rightPercent}%`;
-            rightCount.innerHTML = `${rightPercent}`;
-        }
+      leftCount.style = `width:${leftPercent}%`;
+      leftCount.innerText = `${leftPercent}`;
+      rightCount.style = `width:${rightPercent}%`;
+      rightCount.innerHTML = `${rightPercent}`;
     }
   }
 }
@@ -343,74 +342,72 @@ function issueContents() {
 //쟁점이슈 좋아요 정보 fetch
 let likeList = [];
 const likeFetch = async () => {
-    //테스트 끝나고 삭제
-    const req = {
-        userId: "test",
-        password: "hellotest",
-    };
+  //테스트 끝나고 삭제
+  const req = {
+    userId: "test",
+    password: "hellotest",
+  };
 
-    await fetch(`${url}/api/user/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(req),
-    });
-    //
+  await fetch(`${url}/api/user/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(req),
+  });
+  //
 
-    const response = await fetch(`${url}/api/like/checkedList`, {
-        credentials: "include",
-    });
-    likeList = await response.json();
-    console.log(likeList);
+  const response = await fetch(`${url}/api/like/checkedList`, {
+    credentials: "include",
+  });
+  likeList = await response.json();
+  console.log(likeList);
 };
 
 //쟁점이슈 좋아요 or 좋아요 취소
 function likeClick(id) {
-    console.log(id);
-    if (likeList.findIndex((obj) => obj.issueId == id) == -1) {
-        fetch(`${url}/api/like/upLike`, {
-            method: "POST",
-            credentials: "include",
-            body: JSON.stringify({
-                issueId: `${id}`,
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    alert("해당 입장에 추천을 완료했습니다.");
-                    return window.location.reload();
-                } else if (response.status == 401) {
-                    alert(
-                        "로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다."
-                    );
-                    return (window.location = "../html/login.html");
-                } else {
-                    throw new Error("Network response was not ok.");
-                }
-            })
-            .catch((err) => {
-                alert(err);
-            });
-    } else {
-        fetch(`${url}/api/like/unLike`, {
-            method: "POST",
-            credentials: "include",
-            body: JSON.stringify({
-                issueId: `${id}`,
-            }),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    return "해당 입장에 추천을 취소했습니다.";
-                } else {
-                    throw new Error("Network response was not ok.");
-                }
-            })
-            .then((res) => alert(res))
-            .catch((err) => alert(err));
-    }
+  console.log(id);
+  if (likeList.findIndex((obj) => obj.issueId == id) == -1) {
+    fetch(`${url}/api/like/upLike`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({
+        issueId: `${id}`,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("해당 입장에 추천을 완료했습니다.");
+          return window.location.reload();
+        } else if (response.status == 401) {
+          alert("로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다.");
+          return (window.location = "../html/login.html");
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  } else {
+    fetch(`${url}/api/like/unLike`, {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({
+        issueId: `${id}`,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return "해당 입장에 추천을 취소했습니다.";
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .then((res) => alert(res))
+      .catch((err) => alert(err));
+  }
 }
 
 //쟁점이슈 내용 변경
