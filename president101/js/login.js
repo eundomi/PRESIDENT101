@@ -52,7 +52,6 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
           }).then((value) => {
             if (value) {
               history.back();
-              // window.location.href = "/president101/index.html";
             }
           });
         } else {
