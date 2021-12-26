@@ -38,13 +38,13 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(req),
       redirect: "follow",
     })
       .then((res) => res.json())
       .then((result) => {
         if (result.token) {
-          localStorage.setItem("token", result.token);
           swal({
             title: "로그인 성공",
             text: "로그인에 성공하였습니다.",
