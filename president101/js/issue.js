@@ -338,6 +338,7 @@ function issueContents() {
     }
 }
 
+
 //쟁점이슈 좋아요 정보 fetch
 let likeList = [];
 const likeFetch = async () => {
@@ -388,51 +389,6 @@ function likeClick(id) {
             .catch((err) => alert(err));
     }
 }
-
-// //쟁점이슈 좋아요
-// function issueLike(id) {
-//     fetch(`${url}/api/like/upLike`, {
-//         method: "POST",
-//         body: JSON.stringify({
-//             issueId: `${id}`,
-//         }),
-//     })
-//         .then((response) => {
-//             if (response.ok) {
-//                 return "해당 입장에 추천을 완료했습니다.";
-//             } else if (response.status == 401) {
-//                 return "로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다.";
-//             } else {
-//                 throw new Error("Network response was not ok.");
-//             }
-//         })
-//         .then((res) => {
-//             alert(res);
-//             // window.location = "../html/login.html";
-//         })
-//         .catch((err) => {
-//             alert(err);
-//         });
-// }
-
-// //쟁점이슈 좋아요 취소
-// function issueUnlike(id) {
-//     fetch(`${url}/api/like/unLike`, {
-//         method: "POST",
-//         body: JSON.stringify({
-//             issueId: `${id}`,
-//         }),
-//     })
-//         .then((response) => {
-//             if (response.ok) {
-//                 return "해당 입장에 추천을 취소했습니다.";
-//             } else {
-//                 throw new Error("Network response was not ok.");
-//             }
-//         })
-//         .then((res) => alert(res))
-//         .catch((err) => alert(err));
-// }
 
 //쟁점이슈 내용 변경
 async function issueContentChange(optionIndex, pickCandidate) {

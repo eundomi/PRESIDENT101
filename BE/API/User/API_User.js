@@ -66,7 +66,7 @@ router.post("/login", asyncHandler(async(req, res) => {
             .status(201)
             .cookie("x_auth", token, {
                 maxAge: 1000 * 60 * 60 * 24,
-                httpOnly: true
+                httpOnly: true,
             })
             .json({
                 user,
@@ -78,14 +78,16 @@ router.post("/login", asyncHandler(async(req, res) => {
     }
 }));
 
-router.get("/payload", auth, (req, res) => {
+router.get("/payload", auth, asyncHandler(async(req, res) => {
     const { shortId } = req.decoded;
+    const user = await User.findOne({ shortId })
+    const userName = user.userName
     return res.status(200).json({
         code: 200,
         msg: "정상 토큰입니다",
-        data: shortId,
+        userName,
     });
-});
+}));
 
 router.get("/logout", auth, (req, res) => {
     return res.cookie("x_auth", "").json({
