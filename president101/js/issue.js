@@ -240,8 +240,8 @@ function keywordSection() {
 }
 
 //젱점이슈 내용 fetch
-// const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
-const url = "http://127.0.0.1:9999";
+const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
+//const url = "http://127.0.0.1:9999";
 
 const issueFetch = async (name) => {
     const response = await fetch(
@@ -343,19 +343,19 @@ function issueContents() {
 let likeList = [];
 const likeFetch = async () => {
     //테스트 끝나고 삭제
-    const req = {
-        userId: "test",
-        password: "hellotest",
-    };
+    // const req = {
+    //     userId: "test",
+    //     password: "hellotest",
+    // };
 
-    await fetch(`${url}/api/user/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(req),
-    });
+    // await fetch(`${url}/api/user/login`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     credentials: "include",
+    //     body: JSON.stringify(req),
+    // });
     //
 
     const response = await fetch(`${url}/api/like/checkedList`, {
@@ -371,6 +371,7 @@ function likeClick(id) {
     if (likeList.findIndex((obj) => obj.issueId == id) == -1) {
         fetch(`${url}/api/like/upLike`, {
             method: "POST",
+            head: { "Content-Type": "application/json" },
             credentials: "include",
             body: JSON.stringify({
                 issueId: `${id}`,
@@ -395,6 +396,7 @@ function likeClick(id) {
     } else {
         fetch(`${url}/api/like/unLike`, {
             method: "POST",
+            head: { "Content-Type": "application/json" },
             credentials: "include",
             body: JSON.stringify({
                 issueId: `${id}`,
@@ -402,12 +404,12 @@ function likeClick(id) {
         })
             .then((response) => {
                 if (response.ok) {
-                    return "해당 입장에 추천을 취소했습니다.";
+                    alert("해당 입장에 추천을 취소했습니다.");
+                    return window.location.reload();
                 } else {
                     throw new Error("Network response was not ok.");
                 }
             })
-            .then((res) => alert(res))
             .catch((err) => alert(err));
     }
 }
