@@ -30,10 +30,9 @@ toggleBtn.addEventListener("click", () => {
 var li = document.querySelector(".nav__reg li");
 const log = document.querySelector(".nav__reg");
 
-const port =
-  "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
+const port = "elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
 
-fetch(`${port}/api/user/payload`, {
+fetch(`http://${port}/api/user/payload`, {
   method: "GET",
   redirect: "follow",
   credentials: "include",
@@ -54,19 +53,19 @@ fetch(`${port}/api/user/payload`, {
             swal("로그아웃 완료되었습니다.", {
               icon: "success",
             }).then(() => {
-              fetch(`${port}/api/user/logout`, {
+              fetch(`http://${port}/api/user/logout`, {
                 method: "GET",
                 redirect: "follow",
                 credentials: "include",
+              }).then(() => {
+                log.innerHTML = `<li><a href="../html/login.html">로그인</a></li>
+                  <li>|</li>
+                  <li><a href="../html/register.html">회원가입</a></li>`;
               });
-              log.innerHTML = `<li><a href="/president101/html/login.html">로그인</a></li>
-              <li>|</li>
-              <li><a href="/president101/html/register.html">회원가입</a></li>`;
             });
           }
         });
       };
-    } else {
     }
   })
   .catch((err) => {
