@@ -230,8 +230,8 @@ function keywordSection() {
 }
 
 //젱점이슈 내용 fetch
-//const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
-const url = "http://127.0.0.1:9999";
+const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
+//const url = "http://127.0.0.1:9999";
 
 const issueFetch = async (name) => {
     const response = await fetch(
@@ -347,19 +347,19 @@ function issueContents() {
 let likeList = [];
 const likeFetch = async () => {
     //테스트 끝나고 삭제
-    const req = {
-        userId: "test",
-        password: "hellotest",
-    };
+    // const req = {
+    //     userId: "test",
+    //     password: "hellotest",
+    // };
 
-    await fetch(`${url}/api/user/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(req),
-    });
+    // await fetch(`${url}/api/user/login`, {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     credentials: "include",
+    //     body: JSON.stringify(req),
+    // });
 
     const response = await fetch(`${url}/api/like/checkedList`, {
         credentials: "include",
