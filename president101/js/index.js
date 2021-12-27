@@ -22,7 +22,6 @@ const links = document.querySelector(".nav__links");
 const reg = document.querySelector(".nav__reg");
 
 toggleBtn.addEventListener("click", () => {
-  console.log("suss");
   links.classList.toggle("nav-active");
   reg.classList.toggle("nav-active");
   navbar.classList.toggle("nav-active");
@@ -61,6 +60,7 @@ fetch(`${port}/api/user/payload`, {
                 credentials: "include",
               });
               log.innerHTML = `<li><a href="/president101/html/login.html">로그인</a></li>
+              <li>|</li>
               <li><a href="/president101/html/register.html">회원가입</a></li>`;
             });
           }
