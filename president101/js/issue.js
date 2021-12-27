@@ -156,21 +156,21 @@ function optionDataDelete(optionIndex) {
             let issueScreenContent = document.getElementsByClassName(
                 "issue__content_candidate-01"
             )[i];
-            let issueScreenLike = document.getElementsByClassName(
-                "issue__agree_candidate-left"
-            )[i];
-            let issueScreenLikeOther = document.getElementsByClassName(
-                "issue__agree_candidate-right"
-            )[i];
+            // let issueScreenLike = document.getElementsByClassName(
+            //     "issue__agree_candidate-left"
+            // )[i];
+            // let issueScreenLikeOther = document.getElementsByClassName(
+            //     "issue__agree_candidate-right"
+            // )[i];
 
             issueScreen.innerHTML = `<img src="../imgs/none-people.png" alt="빈 프로필" class="issue__circle_img" width=40px>`;
             issueScreenContent.id = "issue__background-none";
             issueScreenContent.innerText = "";
-            let issueId = issueScreenLike.firstChild.id;
-            issueScreenLike.style = `width:50%`;
-            issueScreenLike.innerHTML = `<div class="issue__agree_none" id="${issueId}">50%</div>`;
-            issueScreenLikeOther.style = `width:50%`;
-            issueScreenLikeOther.firstChild.innerText = "50%";
+            // let issueId = issueScreenLike.firstChild.id;
+            // issueScreenLike.style = `width:50%`;
+            // issueScreenLike.innerHTML = `<div class="issue__agree_none" id="${issueId}">50%</div>`;
+            // issueScreenLikeOther.style = `width:50%`;
+            // issueScreenLikeOther.firstChild.innerText = "50%";
         }
     } else {
         let optionScreen = document.getElementsByClassName(
@@ -230,8 +230,8 @@ function keywordSection() {
 }
 
 //젱점이슈 내용 fetch
-const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
-//const url = "http://127.0.0.1:9999";
+//const url = "http://elice-kdt-sw-1st-vm11.koreacentral.cloudapp.azure.com:5000";
+const url = "http://127.0.0.1:9999";
 
 const issueFetch = async (name) => {
     const response = await fetch(
@@ -262,6 +262,7 @@ function issueLikeTrans() {
             issue.innerHTML = `<div class="issue__agree_none" id="${issueId}">0%</div>`;
 
             otherIssue.style = "width:50%";
+            console.log(otherIssue);
             if (otherIssue == null)
                 otherIssue.innerHTML = `<div class="issue__agree_none" id="${otherIssue.firstChild.id}">0%</div>`;
             else otherIssue.firstChild.innerText = "0%";
@@ -346,19 +347,19 @@ function issueContents() {
 let likeList = [];
 const likeFetch = async () => {
     //테스트 끝나고 삭제
-    // const req = {
-    //     userId: "test",
-    //     password: "hellotest",
-    // };
+    const req = {
+        userId: "test",
+        password: "hellotest",
+    };
 
-    // await fetch(`${url}/api/user/login`, {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     credentials: "include",
-    //     body: JSON.stringify(req),
-    // });
+    await fetch(`${url}/api/user/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(req),
+    });
 
     const response = await fetch(`${url}/api/like/checkedList`, {
         credentials: "include",
@@ -379,13 +380,19 @@ function likeClick(id) {
         })
             .then((response) => {
                 if (response.ok) {
-                    swal("해당 입장에 추천을 완료했습니다.");
-                    return window.location.reload();
+                    swal("해당 입장에 추천을 완료했습니다.").then((value) => {
+                        if (value) {
+                            window.location.reload();
+                        }
+                    });
                 } else if (response.status == 401) {
                     swal(
                         "로그인 후 이용 가능합니다. 로그인 화면으로 이동합니다."
-                    );
-                    return (window.location = "../html/login.html");
+                    ).then((value) => {
+                        if (value) {
+                            window.location = "../html/login.html";
+                        }
+                    });
                 } else {
                     throw new Error("Network response was not ok.");
                 }
@@ -478,7 +485,53 @@ function keywordClick(index) {
     window.scroll({ top: pickKeyword, behavior: "auto" });
 }
 
+//로그인 로그아웃 구현
+function login_out() {
+    const log = document.querySelector(".register__content");
+
+    fetch(`${url}/api/user/payload`, {
+        method: "GET",
+        redirect: "follow",
+        credentials: "include",
+    })
+        .then((res) => res.json())
+        .then((result) => {
+            if (result.userName) {
+                log.innerHTML = `<li><a>${result.userName}님</a></li>`;
+                log.onclick = function () {
+                    if (log.children.length === 2) return;
+                    swal({
+                        title: "로그아웃 하시겠습니까?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((logout) => {
+                        if (logout) {
+                            swal("로그아웃 완료되었습니다.", {
+                                icon: "success",
+                            }).then(() => {
+                                fetch(`${url}/api/user/logout`, {
+                                    method: "GET",
+                                    redirect: "follow",
+                                    credentials: "include",
+                                }).then(() => {
+                                    log.innerHTML = `<li><a href="../html/login.html">로그인</a></li>
+                  <li>|</li>
+                  <li><a href="../html/register.html">회원가입</a></li>`;
+                                });
+                            });
+                        }
+                    });
+                };
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
 window.onload = async function () {
+    login_out();
     getTime();
     memberLink();
     keywordSection();
