@@ -43,7 +43,6 @@ fetch(`${port}/api/user/payload`, {
     if (result.userName) {
       log.innerHTML = `<li><a>${result.userName}님</a></li>`;
       log.onclick = function () {
-        if (log.children.length === 2) return;
         swal({
           title: "로그아웃 하시겠습니까?",
           icon: "warning",
