@@ -297,3 +297,6 @@ button:hover {
 .nav__reg.nav-active {
   display: flex;
 }
+.none_nav {
+  display: none;
+}
