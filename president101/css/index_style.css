@@ -291,9 +291,6 @@ button:hover {
     top: 11%;
     left: 78%;
   }
-  .none_nav {
-    display: none;
-  }
 }
 .nav__bar.nav_active,
 .nav__links.nav-active,

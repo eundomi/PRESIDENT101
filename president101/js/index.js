@@ -43,6 +43,7 @@ fetch(`${port}/api/user/payload`, {
     if (result.userName) {
       log.innerHTML = `<li><a>${result.userName}님</a></li>`;
       log.onclick = function () {
+        if (log.children.length === 2) return;
         swal({
           title: "로그아웃 하시겠습니까?",
           icon: "warning",
@@ -59,7 +60,7 @@ fetch(`${port}/api/user/payload`, {
                 credentials: "include",
               });
               log.innerHTML = `<li><a href="/president101/html/login.html">로그인</a></li>
-              <li class="none_nav">|</li>
+              <li>|</li>
               <li><a href="/president101/html/register.html">회원가입</a></li>`;
             });
           }
