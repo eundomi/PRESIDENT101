@@ -58,9 +58,9 @@ fetch(`http://${port}/api/user/payload`, {
                 redirect: "follow",
                 credentials: "include",
               }).then(() => {
-                log.innerHTML = `<li><a href="../html/login.html">로그인</a></li>
+                log.innerHTML = `<li><a href="/president101/html/login.html">로그인</a></li>
                   <li>|</li>
-                  <li><a href="../html/register.html">회원가입</a></li>`;
+                  <li><a href="/president101/html/register.html">회원가입</a></li>`;
               });
             });
           }
